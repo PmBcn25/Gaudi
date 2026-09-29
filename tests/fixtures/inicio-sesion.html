@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es-us" class="a-no-js">
+<head>
+<meta charset="utf-8">
+<title>Iniciar sesión en Amazon</title>
+<style>
+  body{font-family:Arial,sans-serif;margin:0;color:#0f1111}
+  .aok-hidden,.a-hidden{display:none!important}
+  .a-section{margin-bottom:12px}
+  .a-button{display:inline-block;position:relative;border:1px solid #d5d9d9;border-radius:8px;background:#fff}
+  .a-button-inner{display:block;position:relative;padding:0 12px;line-height:29px}
+  .a-button-input{position:absolute;top:0;left:0;width:100%;height:100%;margin:0;opacity:.01;cursor:pointer;z-index:9}
+  .a-button-disabled{opacity:.5}
+  .a-icon-alt{position:absolute;left:-10000px}
+  .review{border-bottom:1px solid #eee;padding:8px 0}
+  #a-page{max-width:1000px;margin:0 auto;padding:16px}
+</style>
+</head>
+<body class="a-m-us a-aui_72554-c">
+<div id="a-page">
+<header id="navbar" class="nav-sprite-v1"><a id="nav-logo-sprites" href="/ref=nav_logo" class="nav-logo-link">Amazon.com (página de prueba)</a></header>
+
+<div class="a-section a-spacing-medium a-text-center"><a class="a-link-nav-icon" href="/ref=ap_frn_logo"><i class="a-icon a-icon-logo" role="img" aria-label="Amazon"></i></a></div>
+<div id="authportal-main-section" class="a-section">
+  <div class="a-box"><div class="a-box-inner a-padding-extra-large">
+    <h1 class="a-spacing-small">Iniciar sesión</h1>
+    <form name="signIn" method="post" novalidate action="/ap/signin" class="auth-validate-form auth-real-time-validation a-spacing-none">
+      <input type="hidden" name="appActionToken" value="FAKE-TOKEN-FOR-TESTS">
+      <label for="ap_email" class="a-form-label">Correo electrónico o número de teléfono móvil</label>
+      <input type="email" maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+      <span id="continue" class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input id="continue-input" tabindex="5" class="a-button-input" type="submit"><span class="a-button-text" aria-hidden="true">Continuar</span></span></span>
+    </form>
+  </div></div>
+</div>
+</div>
+</body>
+</html>
