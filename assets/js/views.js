@@ -1091,7 +1091,9 @@
     main.appendChild(U.section('1. Extrae las reseñas de cada libro', 'Hay tres formas; la más sencilla es el marcador.', h('div', { class: 'grid grid-3' },
       h('section', { class: 'card' }, h('h3', null, 'Con el marcador (recomendado)'),
         h('ol', { class: 'steps' },
-          h('li', null, 'Abre extractor/instalar-marcador.html del repositorio y arrastra el botón a tu barra de marcadores.'),
+          h('li', null, root.KDP_EXTRACTOR && root.KDP_EXTRACTOR.bookmarklet
+            ? 'Arrastra el botón «Extraer reseñas KDP» de arriba a tu barra de marcadores (o usa extractor/instalar-marcador.html del repositorio).'
+            : 'Abre extractor/instalar-marcador.html del repositorio y arrastra el botón a tu barra de marcadores.'),
           h('li', null, 'Abre en Amazon la página de reseñas de un libro (enlaces abajo), con tu sesión iniciada.'),
           h('li', null, 'Pulsa el marcador: hace clic en «Ver más reseñas» y en «Mostrar 10 opiniones más» hasta el final.'),
           h('li', null, 'Al terminar descarga resenas-ASIN.json. Repite con cada libro.'))),

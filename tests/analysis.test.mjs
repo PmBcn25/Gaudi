@@ -117,3 +117,12 @@ test('términos distintivos entre reseñas críticas y positivas', () => {
   assert.ok(t.critical.some((x) => x.term.includes('illustrations')));
   assert.ok(t.positive.some((x) => x.term.includes('photographs')));
 });
+
+test('fechas de publicación en texto pasan a ISO', () => {
+  assert.equal(A.isoPublicationDate('13 de diciembre de 2022'), '2022-12-13');
+  assert.equal(A.isoPublicationDate('July 11, 2017'), '2017-07-11');
+  assert.equal(A.isoPublicationDate('diciembre de 2022'), '2022-12');
+  assert.equal(A.isoPublicationDate('2020-07-06'), '2020-07-06');
+  assert.equal(A.isoPublicationDate('Bloomsbury (2017)'), '2017');
+  assert.equal(A.isoPublicationDate('sin fecha'), null);
+});

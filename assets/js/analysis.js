@@ -622,6 +622,26 @@
       (typeof v === 'object' && !Array.isArray(v) && !Object.keys(v).length);
   }
 
+  // Fecha de publicación en formato ISO (AAAA, AAAA-MM o AAAA-MM-DD) aunque venga como texto.
+  var MONTHS = { enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, setiembre: 9,
+    octubre: 10, noviembre: 11, diciembre: 12, january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7,
+    august: 8, september: 9, october: 10, november: 11, december: 12, ene: 1, feb: 2, mar: 3, abr: 4, jun: 6, jul: 7,
+    ago: 8, sep: 9, sept: 9, oct: 10, nov: 11, dic: 12, jan: 1, apr: 4, aug: 8, dec: 12 };
+  function isoPublicationDate(v) {
+    if (v == null) return null;
+    var s = String(v).trim();
+    if (/^\d{4}(-\d{2}){0,2}$/.test(s)) return s;
+    var n = normalize(s);
+    var m = n.match(/\b(\d{1,2})\s+(?:de\s+)?([a-z]+)\s+(?:de\s+)?(\d{4})\b/) || null;
+    if (m && MONTHS[m[2]]) return m[3] + '-' + ('0' + MONTHS[m[2]]).slice(-2) + '-' + ('0' + m[1]).slice(-2);
+    m = n.match(/\b([a-z]+)\s+(\d{1,2})\s+(\d{4})\b/);
+    if (m && MONTHS[m[1]]) return m[3] + '-' + ('0' + MONTHS[m[1]]).slice(-2) + '-' + ('0' + m[2]).slice(-2);
+    m = n.match(/\b([a-z]+)\s+(?:de\s+)?(\d{4})\b/);
+    if (m && MONTHS[m[1]]) return m[2] + '-' + ('0' + MONTHS[m[1]]).slice(-2);
+    m = n.match(/\b(1[89]\d{2}|20\d{2})\b/);
+    return m ? m[1] : null;
+  }
+
   function dedupeReviews(list) {
     var seen = {}, out = [];
     list.forEach(function (r) {
@@ -649,6 +669,13 @@
       META_FIELDS.forEach(function (f) {
         if (!isEmpty(src[f])) {
           if (f === 'subtitle' && !isEmpty(b.subtitle) && isEmpty(src.title)) return;
+          if (f === 'publicationDate') {
+            var iso = isoPublicationDate(src[f]);
+            if (iso) b.publicationDate = iso;
+            b.publicationDateText = String(src[f]);
+            touched = true;
+            return;
+          }
           b[f] = src[f];
           touched = true;
         }
@@ -719,6 +746,7 @@
     parseImport: parseImport,
     mergeData: mergeData,
     parsePrice: parsePrice,
+    isoPublicationDate: isoPublicationDate,
     analyzeAll: analyzeAll,
     weights: WEIGHTS,
     util: { mean: mean, median: median, round: round, clamp01: clamp01 }

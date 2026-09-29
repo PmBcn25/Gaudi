@@ -18,7 +18,8 @@
       short: 'Fotos',
       words: ['fotograf*', 'foto', 'fotos', 'photo', 'photos', 'photograph*', 'picture*', 'pics',
         'image', 'images', 'imagen', 'imagenes', 'ilustrac*', 'illustrat*', 'lamina*', 'visual*',
-        'imagery', 'color plates', 'full color', 'a todo color', 'a color']
+        'imagery', 'color plates', 'full color', 'a todo color', 'a color', 'words only', 'words-only', 'solo con palabras',
+        'solo texto', 'text only']
     },
     {
       id: 'impresion',
@@ -28,7 +29,8 @@
         'binding', 'bound', 'encuadern*', 'hardcover', 'hard cover', 'tapa dura', 'tapa blanda', 'paperback',
         'glossy', 'satinado', 'spine', 'lomo', 'well made', 'bien editado', 'edicion cuidada', 'cuidada edicion',
         'production quality', 'beautifully produced', 'calidad del libro', 'book quality', 'quality of the book',
-        'pages fell', 'hojas sueltas', 'se despega', 'cheaply made']
+        'pages fell', 'hojas sueltas', 'se despega', 'cheaply made', 'sturdy', 'robusto', 'thick pages', 'paginas gruesas',
+        'fingerprint*', 'huellas', 'hardback', 'matte', 'mate']
     },
     {
       id: 'formato',
@@ -36,14 +38,15 @@
       short: 'Tamaño',
       words: ['size', 'sized', 'tamano', 'small', 'smaller', 'tiny', 'pequen*', 'diminut*', 'large', 'larger',
         'heavy', 'pesad*', 'weight', 'coffee table', 'mesa de centro', 'pocket',
-        'bolsillo', 'dimension*', 'compact*', 'thin', 'delgado', 'fino', 'thick', 'grueso', 'manejable']
+        'bolsillo', 'dimension*', 'compact*', 'thin', 'delgado', 'fino', 'thick', 'grueso', 'manejable', 'few pages', 'pocas paginas', 'short book', 'libro corto',
+        'breve', 'brief', 'concise', 'conciso']
     },
     {
       id: 'redaccion',
       label: 'Redacción y estilo',
       short: 'Redacción',
-      words: ['well written', 'beautifully written', 'bien escrit*', 'mal escrit*', 'poorly written', 'writing',
-        'written', 'prose', 'prosa', 'readable', 'ameno', 'amena', 'engaging', 'entretenid*', 'boring', 'bored',
+      words: ['well written', 'beautifully written', 'bien escrit*', 'mal escrit*', 'poorly written', 'the writing',
+        'la escritura', 'writer', 'escritor', 'escritora', 'writing style', 'accessible', 'accesible', 'prose', 'prosa', 'readable', 'ameno', 'amena', 'engaging', 'entretenid*', 'boring', 'bored',
         'aburrid*', 'dry', 'arido', 'dense', 'denso', 'densa', 'tedious', 'tedios*', 'style', 'estilo',
         'narrative', 'narrativa', 'easy to read', 'facil de leer', 'hard to read', 'dificil de leer', 'academic',
         'academico', 'flows', 'se lee', 'page turner', 'engancha', 'storytelling', 'wordy', 'verbose']
@@ -65,7 +68,8 @@
       words: ['history', 'historia', 'historic*', 'historico', 'historica', 'biograph*', 'biografia', 'life of',
         'his life', 'su vida', 'vida de', 'story of', 'backstory', 'contexto', 'context', 'catalan*',
         'catalunya', 'cataluna', 'civil war', 'guerra civil', 'modernis*', 'renaixenca', 'anarchis*',
-        'epoca', 'century', 'siglo']
+        'epoca', 'century', 'siglo', 'career', 'trayectoria', 'roots', 'raices', 'nationalis*', 'nacionalis*',
+        'cronica']
     },
     {
       id: 'arquitectura',
@@ -84,7 +88,8 @@
       words: ['symbol*', 'simbol*', 'religio*', 'faith', 'spiritual*', 'espiritual*', 'catholic*',
         'catolic*', 'god', 'dios', 'christ', 'christian*', 'cristo', 'cristian*', 'bibl*', 'prayer',
         'oracion', 'sacred', 'lo sagrado', 'arte sacro', 'liturg*', 'iconograph*', 'iconograf*', 'meaning', 'significado',
-        'theolog*', 'teolog*', 'devotion', 'devocion', 'santo', 'santa', 'fe cristiana', 'la fe']
+        'theolog*', 'teolog*', 'devotion', 'devocion', 'santo', 'santa', 'fe cristiana', 'la fe', 'la luz', 'the light',
+        'in light', 'stained glass', 'vidriera*', 'vitral*']
     },
     {
       id: 'visita',
@@ -94,7 +99,8 @@
         'tour', 'tours', 'touris*', 'turist*', 'guidebook', 'guide book', 'guia', 'before going',
         'antes de ir', 'after visiting', 'despues de visitar', 'souvenir', 'recuerdo', 'vacation', 'vacaciones',
         'holiday', 'when we were there', 'cuando estuve', 'went there', 'fuimos', 'estuvimos', 'in person',
-        'en persona', 'itinerar*']
+        'en persona', 'itinerar*', 'no has estado', 'never been', 'never visited', 'been to barcelona',
+        'seen in barcelona', 'bought it in barcelona', 'comprado en barcelona', 'compre en barcelona', 'nunca pudo']
     },
     {
       id: 'planos',
@@ -145,7 +151,7 @@
       short: 'Envío',
       words: ['arrived', 'arrive', 'llego', 'llegaron', 'damaged', 'danad*', 'shipping', 'shipped', 'envio',
         'packag*', 'paquete', 'embalaje', 'condition', 'en mal estado', 'dent*', 'golpead*', 'torn', 'roto',
-        'rota', 'used copy', 'usado', 'usada', 'delivery', 'entrega', 'bent', 'doblad*', 'scratched']
+        'rota', 'used copy', 'usado', 'usada', 'delivery', 'entrega', 'bent', 'doblad*', 'scratched', 'sticker', 'pegatina', 'residue', 'residuo']
     },
     {
       id: 'regalo',
@@ -170,7 +176,9 @@
       words: ['organized', 'organised', 'organization', 'organizad*', 'organizacion', 'chronolog*',
         'cronolog*', 'confus*', 'jumps around', 'salta de', 'index', 'indice', 'chapters', 'capitulos',
         'layout', 'maquetacion', 'captions', 'caption', 'pie de foto', 'pies de foto', 'easy to follow',
-        'facil de seguir', 'hard to follow', 'dificil de seguir', 'well structured', 'bien estructurad*']
+        'facil de seguir', 'hard to follow', 'dificil de seguir', 'well structured', 'bien estructurad*',
+        'disjointed', 'inconex*', 'away from the text', 'lejos del texto', 'bite-sized', 'bite sized', 'fragmentos breves',
+        'lumpy']
     },
     {
       id: 'gaudi_persona',
@@ -179,7 +187,7 @@
       words: ['personality', 'personalidad', 'character', 'caracter', 'genius', 'genio', 'humble', 'humilde',
         'eccentric', 'excentric*', 'devout', 'devoto', 'tram', 'tranvia', 'his death', 'su muerte', 'beatif*',
         'venerable', 'saint', 'the man', 'el hombre', 'as a person', 'como persona', 'private life',
-        'vida privada', 'his faith', 'su fe', 'obsess*', 'obses*']
+        'vida privada', 'his faith', 'su fe']
     },
     {
       id: 'ninos',
@@ -203,8 +211,7 @@
       label: 'Emoción e inspiración',
       short: 'Emoción',
       words: ['inspir*', 'moving', 'moved', 'conmov*', 'emocion*', 'awe', 'asombr*', 'breathtaking',
-        'impresionante', 'goosebumps', 'piel de gallina', 'wonder', 'maravill*', 'magic*', 'magia',
-        'magnific*', 'stunning', 'espectacular', 'unforgettable', 'inolvidable']
+        'goosebumps', 'piel de gallina', 'wonder', 'maravill*', 'magic*', 'magia', 'unforgettable', 'inolvidable']
     }
   ];
 
