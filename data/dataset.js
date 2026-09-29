@@ -1,7 +1,7 @@
 /* Archivo generado por tools/build-data.mjs. No lo edites a mano: cambia los JSON de data/ y ejecuta npm run build. */
 window.KDP_DATASET = {
  "schema": "kdp-dataset/1",
- "generatedAt": "2026-09-29T11:12:03.271Z",
+ "generatedAt": "2026-09-29T11:44:24.080Z",
  "consultado": "2026-09-29",
  "links": {
   "total": 15,
@@ -277,7 +277,7 @@ window.KDP_DATASET = {
    "subtitle": "The Cathedral of light",
    "authors": [
     "Chiara Curti",
-    "Pere Vivas (fotografía)"
+    "Pere Vivas Ortiz"
    ],
    "publisher": "Triangle Books",
    "publisherType": "especializada",
@@ -287,8 +287,8 @@ window.KDP_DATASET = {
    "language": "Inglés",
    "type": "Fotolibro con texto de experta",
    "focus": "Sagrada Família: luz y simbolismo",
-   "rating": null,
-   "ratingsTotal": null,
+   "rating": 4.4,
+   "ratingsTotal": 14,
    "ratingConfidence": null,
    "ratingNote": "Dato de Amazon.com no visible. Otros mercados: Reino Unido 4,5 (14), Canadá 4,6 (10), Australia 5,0 (8).",
    "ratingProxy": {
@@ -296,17 +296,76 @@ window.KDP_DATASET = {
     "ratingsTotal": 14,
     "market": "Amazon.co.uk"
    },
-   "prices": [],
+   "prices": [
+    {
+     "text": "US$48.21",
+     "amount": 48.21,
+     "currency": "USD",
+     "format": "Pasta blanda"
+    },
+    {
+     "format": "Pasta blanda",
+     "text": {
+      "text": "US$48.21",
+      "amount": 48.21,
+      "currency": "USD"
+     },
+     "amount": null,
+     "currency": "USD"
+    }
+   ],
    "priceNote": "Amazon.co.uk: 28,00 £",
-   "bestSellersRank": [],
+   "bestSellersRank": [
+    {
+     "rank": 157758,
+     "category": "Libros"
+    },
+    {
+     "rank": 23,
+     "category": "Guías de Viaje de Barcelona"
+    }
+   ],
    "notes": "Ediciones en español (8484788938), catalán, alemán e italiano. Se vende en la tienda oficial de la basílica.",
    "sources": [
     "https://www.amazon.com/Sagrada-Fam%C3%ADlia-Cathedral-light/dp/8484788946",
     "https://triangle.cat/en/producto/the-sagrada-familia/",
     "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946"
    ],
-   "metaSource": "web",
-   "metaDate": "2026-09-29"
+   "metaSource": "amazon",
+   "metaDate": "2026-09-29T11:41:10.799Z",
+   "cover": "https://m.media-amazon.com/images/I/911R43UgsBL._SY522_.jpg",
+   "coverData": "data:image/jpeg;base64,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",
+   "histogram": {
+    "1": 0,
+    "2": 11,
+    "3": 11,
+    "4": 0,
+    "5": 78
+   },
+   "price": {
+    "text": "US$48.21",
+    "amount": 48.21,
+    "currency": "USD",
+    "format": "Pasta blanda"
+   },
+   "formats": [
+    {
+     "format": "Pasta blanda",
+     "price": {
+      "text": "US$48.21",
+      "amount": 48.21,
+      "currency": "USD"
+     }
+    }
+   ],
+   "publicationDateText": "2022-12-13",
+   "isbn10": "8484788946",
+   "importInfo": {
+    "exportedAt": "2026-09-29T11:41:10.799Z",
+    "complete": true,
+    "tool": "marcador/1.0.0",
+    "count": 6
+   }
   },
   {
    "asin": "8491031987",
@@ -409,7 +468,112 @@ window.KDP_DATASET = {
    "metaDate": "2026-09-29"
   }
  ],
- "reviews": {},
+ "reviews": {
+  "8484788946": [
+   {
+    "id": "R3JQCC0Y8PR9G4",
+    "asin": "8484788946",
+    "author": "SWsam",
+    "rating": 5,
+    "title": "As advertised. Perfect Smaller Coffee Table Book",
+    "body": "I ordered this book as a gift for someone elderly who wanted to see this church in person but never got the chance. It is a stunning book and a nice size. Not too big but not as small as I thought. It’s in English although I was equally excited about it being in Spanish based on the item’s pictures here on Amazon. The book has a great mix of colored photos, description text accompanying the photos, and text itself. I attached some photos just so anyone can understand more of the size of it and the backing. You can lay the book flat when opened on any page without holding it. However over time it will crease the book binding. But absolutely no showstoppers for me. Very happy with the book.",
+    "date": "2025-04-04",
+    "dateText": "Calificado en Estados Unidos el 4 de abril de 2025",
+    "country": "Estados Unidos",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 1,
+    "images": 5,
+    "section": "main"
+   },
+   {
+    "id": "R25W9ZIUV7YN6P",
+    "asin": "8484788946",
+    "author": "LAJ",
+    "rating": 5,
+    "title": "Great pictures",
+    "body": "Great subject book",
+    "date": "2025-05-15",
+    "dateText": "Calificado en Estados Unidos el 15 de mayo de 2025",
+    "country": "Estados Unidos",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 0,
+    "images": 0,
+    "section": "main"
+   },
+   {
+    "id": "R394ZYOKJO58AJ",
+    "asin": "8484788946",
+    "author": "S",
+    "rating": 5,
+    "title": "Excellent book!",
+    "body": "Gave as a gift for someone who was very interested in this cathedral. He loved it and couldn't stop talking about it.",
+    "date": "2024-01-03",
+    "dateText": "Calificado en Estados Unidos el 3 de enero de 2024",
+    "country": "Estados Unidos",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 0,
+    "images": 0,
+    "section": "main"
+   },
+   {
+    "id": "R2W8SVA8VLA9KW",
+    "asin": "8484788946",
+    "author": "Bennett Blackburn",
+    "rating": 3,
+    "title": "Light but not gravity? Or: religion not structure!",
+    "body": "Stunning photography, mostly of the building’s ornamentation.\nThe author, an architect who lives in Barcelona and has studied and worked on the church (it is not a cathedral) gives an intimate description of the building’s existence in light, through the seasons and through each day. She is repetitious: God created light, the light entered Mary’s womb and was born as Jesus, Light of the World. Her focus is on symbolism, both of the ornamentation, which is overwhelming to a modern aesthetic, and in the the fabric and alignment of the building.\nI have not stood before this building, so the scale of the carved stone sculpting I have not experienced.\nIn photos of the whole building, much of the ornament looks like mud splattered on the model of a church, or sand dripped with water to make a sand castle.\nHer focus on light ignores gravity, the handling of which was Gaudi’s structural genius.\nI finished the book, but the obsession with religion, not architecture was very disappointing to me personally.\nBe forewarned.",
+    "date": "2026-03-26",
+    "dateText": "Calificado en Estados Unidos el 26 de marzo de 2026",
+    "country": "Estados Unidos",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 1,
+    "images": 0,
+    "section": "main"
+   },
+   {
+    "id": "R3TMCON4A6RQ2L",
+    "asin": "8484788946",
+    "author": "Ann Fausnight",
+    "rating": 2,
+    "title": "The Segrada Familia",
+    "body": "While we love the book, we would have liked to display it on our coffee table, but a sticker on the front in the middle of the illustration left a sticky residue that sticks to everything. We are very disappointed by this.",
+    "date": "2025-07-23",
+    "dateText": "Calificado en Estados Unidos el 23 de julio de 2025",
+    "country": "Estados Unidos",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 0,
+    "images": 0,
+    "section": "main"
+   },
+   {
+    "id": "R1KPF5YS7PTCUR",
+    "asin": "8484788946",
+    "author": "Andres",
+    "rating": 5,
+    "title": "Great combination of details and photos",
+    "body": "This book is great for those who want to really go into the details of La Sagrada Familia, which you cannot even see when you are there unless someone tells you or reads this book. Great photos as well.",
+    "date": "2023-12-28",
+    "dateText": "Calificado en Australia el 28 de diciembre de 2023",
+    "country": "Australia",
+    "verified": true,
+    "vine": false,
+    "format": "Pasta blanda",
+    "helpful": 0,
+    "images": 0,
+    "section": "international"
+   }
+  ]
+ },
  "signals": [
   {
    "asin": "8484788946",
@@ -1461,5 +1625,14 @@ window.KDP_DATASET = {
    }
   ]
  },
- "imports": []
+ "imports": [
+  {
+   "asin": "8484788946",
+   "file": "8484788946.json",
+   "count": 6,
+   "exportedAt": "2026-09-29T11:41:10.799Z",
+   "complete": true,
+   "tool": "marcador/1.0.0"
+  }
+ ]
 };
