@@ -1,9 +1,90 @@
 /* Archivo generado por tools/build-data.mjs. No lo edites a mano: cambia los JSON de data/ y ejecuta npm run build. */
 window.KDP_DATASET = {
  "schema": "kdp-dataset/1",
- "generatedAt": "2026-09-29T10:47:05.384Z",
+ "generatedAt": "2026-09-29T11:12:03.271Z",
  "consultado": "2026-09-29",
- "links": null,
+ "links": {
+  "total": 15,
+  "unique": 8,
+  "duplicates": 7,
+  "list": [
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/8484788946/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "8484788946",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/1632867818/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "1632867818",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/8484788946/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "8484788946",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/0060935634/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "0060935634",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/1632867818/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "1632867818",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/0060935634/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "0060935634",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/3836566192/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "3836566192",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/1632867818/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "1632867818",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/8484788946/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "8484788946",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/0060935634/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "0060935634",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/1632867818/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "1632867818",
+    "duplicate": true
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/8491031987/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "8491031987",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/B0GF2QG1T9/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "B0GF2QG1T9",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/B01FN37I44/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "B01FN37I44",
+    "duplicate": false
+   },
+   {
+    "url": "https://www.amazon.com/-/es/portal/customer-reviews/3836560283/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+    "asin": "3836560283",
+    "duplicate": false
+   }
+  ]
+ },
  "books": [
   {
    "asin": "3836566192",

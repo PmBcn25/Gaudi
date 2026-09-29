@@ -225,8 +225,12 @@ async function ensureAccess(page, opts, src, targetUrl) {
   }
 }
 
+const REVIEW_SELECTOR = '[data-hook="review"], [id^="customer_review-"], [id^="customer_review_foreign-"], div.review';
+
 // Runs KDPExtractor.collect() inside the page (expand + parse + pagination).
 async function collectOnPage(page, src, options) {
+  // Reviews may be rendered by Amazon's scripts after "load": give them a moment to appear.
+  await page.waitForSelector(REVIEW_SELECTOR, { timeout: FAST ? 2000 : 8000 }).catch(() => {});
   for (let attempt = 1; attempt <= 2; attempt++) {
     await inject(page, src);
     try {
@@ -514,7 +518,7 @@ export async function main(argv = process.argv.slice(2)) {
 
   await mkdir(outDir, { recursive: true });
   const src = await readFile(EXTRACTOR, 'utf8');
-  const version = (src.match(/var VERSION = '([^']+)'/) || [])[1] || '0';
+  const version = (src.match(/var version = '([^']+)'/i) || [])[1] || '0';
 
   let context;
   try {

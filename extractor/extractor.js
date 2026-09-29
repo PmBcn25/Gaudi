@@ -7,8 +7,9 @@
  * (ver docs/formato-datos.md).
  *
  * Se usa como marcador (bookmarklet), pegado en la consola del navegador o inyectado por
- * extractor/scrape.mjs (Playwright). Solo hace peticiones a páginas del MISMO dominio de Amazon
- * en el que se ejecuta y nunca envía datos a ningún otro sitio.
+ * extractor/scrape.mjs (Playwright). Solo hace peticiones a Amazon: páginas del MISMO dominio en
+ * el que se ejecuta y la miniatura de la portada (servidor de imágenes de Amazon). Nunca envía
+ * datos a ningún otro sitio.
  *
  * Code notes: ES2019, a single IIFE, no build step. The only global it defines is
  * window.KDPExtractor. Set window.KDPX_NO_AUTORUN = true before loading it to skip the
@@ -19,7 +20,7 @@
 
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
-  var VERSION = '1.0.0';
+  var version = '1.0.0';
   var SCHEMA = 'kdp-reviews/1';
   var PANEL_ID = 'kdpx-panel';
   var META_PREFIX = 'kdpx:meta:';
@@ -48,7 +49,7 @@
   function clean(s) { return str(s).replace(MARKS_RE, '').replace(/\s+/g, ' ').trim(); }
   function fold(s) {
     var t = clean(s);
-    if (t.normalize) t = t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    if (t.normalize) t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     return t.toLowerCase();
   }
   function textOf(el) { return el ? clean(el.textContent) : ''; }
@@ -1487,7 +1488,7 @@
     return {
       schema: SCHEMA,
       exportedAt: data.exportedAt || new Date().toISOString(),
-      tool: data.tool || ('marcador/' + VERSION),
+      tool: data.tool || ('marcador/' + version),
       pageUrl: data.pageUrl || location.href,
       marketplace: data.marketplace || location.host,
       complete: !!data.complete,
@@ -1643,7 +1644,7 @@
     var bClose = h('button', { className: 'x', type: 'button', 'aria-label': 'Cerrar', title: 'Cerrar (la extracción sigue)', text: '×' });
     var list = h('ul');
     var box = h('div', { className: 'box', role: 'dialog', 'aria-label': 'Extractor de reseñas KDP' }, [
-      h('div', { className: 'hd' }, [h('span', { className: 'tt', text: '📥 Extractor de reseñas KDP' }), h('span', { className: 'ver', text: 'v' + VERSION }), bClose]),
+      h('div', { className: 'hd' }, [h('span', { className: 'tt', text: '📥 Extractor de reseñas KDP' }), h('span', { className: 'ver', text: 'v' + version }), bClose]),
       status,
       h('div', { className: 'ct' }, ['Reseñas cargadas: ', nRev, ' · Clics: ', nClk]),
       h('label', null, [chk, h('span', { text: 'Recorrer también los filtros por estrellas (más completo)' })]),
@@ -1851,7 +1852,7 @@
   /* ------------------------------------------------------------------ public API */
 
   var api = {
-    version: VERSION,
+    version: version,
     schema: SCHEMA,
     parseReviews: parseReviews,
     parseBookMeta: parseBookMeta,

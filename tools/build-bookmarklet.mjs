@@ -4,11 +4,12 @@
 //   extractor/instalar-marcador.html → página para instalarlo arrastrando un botón
 // Uso: npm run bookmarklet
 //
-// The "minifier" is deliberately conservative: a small lexer that understands strings, template
-// literals, regex literals and comments. It removes comments and indentation and collapses spaces,
-// but keeps line breaks (so automatic semicolon insertion behaves exactly as in the source).
-// The result is compiled with node:vm before being written; if anything fails, the original
-// file is used unchanged.
+// The "minifier" is deliberately conservative and dependency-free: a small lexer that understands
+// strings, template literals, regex literals and comments. It (1) renames the functions/variables
+// declared at the top level of the IIFE to short fresh names (never property names), (2) removes
+// comments and redundant whitespace, and line breaks only where automatic semicolon insertion can
+// never apply. The result is compiled with node:vm before being written (and the tests compare its
+// syntax tree with the original); if anything fails, the original file is used unchanged.
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,8 +26,8 @@ export const MAX_BOOKMARKLET_LENGTH = 65000;
 const REGEX_KEYWORDS = new Set(['return', 'typeof', 'instanceof', 'in', 'of', 'new', 'delete', 'void', 'throw', 'case', 'do', 'else', 'yield', 'await']);
 const PUNCTUATORS = ['>>>=', '...', '===', '!==', '**=', '<<=', '>>=', '>>>', '&&=', '||=', '??=', '=>', '==', '!=', '<=', '>=', '&&', '||', '??', '?.', '++', '--', '+=', '-=', '*=', '/=', '%=', '&=', '|=', '^=', '<<', '>>', '**'];
 
-function isIdStart(c) { return /[A-Za-z_$\u0080-￿]/.test(c); }
-function isIdPart(c) { return /[\w$\u0080-￿]/.test(c); }
+function isIdStart(c) { return /[A-Za-z_$\u0080-\uffff]/.test(c); }
+function isIdPart(c) { return /[\w$\u0080-\uffff]/.test(c); }
 
 /**
  * Splits JavaScript source into tokens: ws, nl, comment, str, tpl, re, id, num, punc.
@@ -203,6 +204,76 @@ export function stripJs(src) {
   return out.join('');
 }
 
+// Contexts where "{" starts an object literal (otherwise it starts a block).
+const OBJECT_AFTER = new Set(['=', '(', ',', ':', '[', '?', '||', '&&', '??', '!', '+', '-', '*', '/', '%', '==', '===', '!=',
+  '!==', '<', '>', '<=', '>=', '+=', '-=', '...', '&', '|', '^', '~', 'return', 'typeof', 'void', 'in', 'of', 'case',
+  'throw', 'delete', 'instanceof', 'yield', 'await']);
+const NEVER_RENAME = new Set(['arguments', 'eval', 'undefined', 'window', 'document', 'this']);
+
+function freshNames(taken) {
+  let n = 0;
+  return () => {
+    let name;
+    do { name = `$${(n++).toString(36)}`; } while (taken.has(name));
+    return name;
+  };
+}
+
+/**
+ * Renames the functions and variables declared directly in the body of the outer IIFE to short
+ * fresh names. Uniform renaming of those bindings is safe: every free use inside the IIFE refers
+ * to them, local shadowing declarations are renamed consistently and the new names are unused.
+ * Property accesses (a.name) and object keys ({name: …}) are never touched; names that appear as
+ * shorthand properties or methods are skipped altogether.
+ * @returns {{ code: string, map: Record<string, string> }}
+ */
+export function mangleTopLevel(src) {
+  const toks = tokenize(src);
+  const sig = [];
+  toks.forEach((t, i) => { if (t.type !== 'ws' && t.type !== 'nl' && t.type !== 'comment') sig.push(i); });
+  const stack = [];
+  let braces = 0;
+  const declared = new Set();
+  const unsafe = new Set();
+  const taken = new Set();
+  const refs = [];
+  sig.forEach((i, s) => {
+    const t = toks[i];
+    const prev = s > 0 ? toks[sig[s - 1]] : null;
+    const next = s + 1 < sig.length ? toks[sig[s + 1]] : null;
+    if (t.type === 'punc') {
+      if (t.value === '{') { stack.push({ ch: '{', obj: !!prev && OBJECT_AFTER.has(prev.value) }); braces++; }
+      else if (t.value === '(' || t.value === '[') stack.push({ ch: t.value, obj: false });
+      else if (t.value === '}' || t.value === ')' || t.value === ']') {
+        const top = stack.pop();
+        if (top && top.ch === '{') braces--;
+      }
+      return;
+    }
+    if (t.type !== 'id') return;
+    taken.add(t.value);
+    if (prev && (prev.value === '.' || prev.value === '?.')) return; // property access
+    const top = stack[stack.length - 1];
+    if (top && top.obj && prev && (prev.value === '{' || prev.value === ',')) {
+      if (next && next.value === ':') return; // object key
+      unsafe.add(t.value); // shorthand property or method: leave this name alone
+      return;
+    }
+    if (braces === 1 && prev && prev.type === 'id' && (prev.value === 'function' || prev.value === 'var')) declared.add(t.value);
+    refs.push(i);
+  });
+  const counts = new Map();
+  refs.forEach((i) => {
+    const v = toks[i].value;
+    if (declared.has(v) && !unsafe.has(v) && !NEVER_RENAME.has(v) && v.length > 2) counts.set(v, (counts.get(v) || 0) + 1);
+  });
+  const next = freshNames(taken);
+  const map = {};
+  [...counts.entries()].sort((a, b) => b[1] * b[0].length - a[1] * a[0].length).forEach(([name]) => { map[name] = next(); });
+  refs.forEach((i) => { if (map[toks[i].value]) toks[i] = { ...toks[i], value: map[toks[i].value] }; });
+  return { code: toks.map((t) => t.value).join(''), map };
+}
+
 /**
  * Returns the code with string/template/regex contents and comments blanked out (same length is
  * not preserved) plus the list of regex literals — used by the tests to check the syntax level.
@@ -220,13 +291,16 @@ export function maskJs(src) {
 }
 
 // Percent-encodes only what a javascript: URL needs: "%" (the browser percent-decodes the URL
-// before running it), controls/line breaks (stripped by URL parsers), non-ASCII, and characters
-// that are delimiters or unsafe in HTML attributes. Everything else stays readable and short.
+// before running it), controls/line breaks (URL parsers drop them), non-ASCII, and "?" / "#".
+// Without a raw "?" or "#" the whole URL is an "opaque path", where browsers keep spaces and
+// quotes as they are; after a raw "?" they would re-encode every space as %20 and the stored
+// bookmark would grow well past Firefox's 65 536-character limit. The result is its own
+// WHATWG serialization: new URL(href).href === href.
 export function toBookmarklet(code) {
   let out = '';
   for (const ch of code) {
     const cp = ch.codePointAt(0);
-    out += (cp < 0x20 || cp > 0x7e || '%\\#"<>`'.includes(ch)) ? encodeURIComponent(ch) : ch;
+    out += (cp < 0x21 && ch !== ' ') || cp > 0x7e || '%?#`'.includes(ch) ? encodeURIComponent(ch) : ch;
   }
   return `javascript:${out}`;
 }
@@ -357,19 +431,24 @@ export function renderInstallPage({ href, consoleCode, version, length }) {
 
 export async function build({ quiet = false, write = true } = {}) {
   const src = await readFile(SOURCE, 'utf8');
-  const version = (src.match(/var VERSION = '([^']+)'/) || [])[1] || '0';
+  const version = (src.match(/var version = '([^']+)'/i) || [])[1] || '0';
   let code;
+  let map = {};
   try {
-    code = stripJs(src);
+    const mangled = mangleTopLevel(src);
+    map = mangled.map;
+    code = stripJs(mangled.code);
     new vm.Script(code, { filename: 'bookmarklet.js' });
   } catch (e) {
     if (!quiet) console.warn(`Aviso: no se pudo compactar el código (${e.message}); uso el archivo completo.`);
     code = src;
+    map = {};
   }
-  code = `${code.trim()}\nvoid 0;`;
+  code = code.trim();
+  if (!/void 0;$/.test(code)) code += '\nvoid 0;';
   const href = toBookmarklet(code);
   const html = renderInstallPage({ href, consoleCode: code, version, length: href.length });
-  if (!write) return { href, code, version, html };
+  if (!write) return { href, code, version, html, map };
   await writeFile(OUT_TXT, href, 'utf8');
   await writeFile(OUT_HTML, html, 'utf8');
   if (!quiet) {
@@ -378,7 +457,7 @@ export async function build({ quiet = false, write = true } = {}) {
     console.log('  extractor/instalar-marcador.html (ábrelo en el navegador y arrastra el botón a la barra de marcadores)');
     if (href.length > MAX_BOOKMARKLET_LENGTH) console.warn('Aviso: el marcador supera 65 000 caracteres; Firefox podría no guardarlo. Usa la consola en ese caso.');
   }
-  return { href, code, version, html };
+  return { href, code, version, html, map };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
