@@ -362,9 +362,12 @@
     analyzed.forEach(function (a) {
       if (!a.polarity) return;
       var critical = a.polarity !== 'pos';
-      var toks = tokens(normalize((a.review.title || '') + ' ' + a.review.body));
-      var grams = toks.slice();
-      for (var i = 0; i + 1 < toks.length; i++) grams.push(toks[i] + ' ' + toks[i + 1]);
+      var grams = [];
+      [a.review.title || '', a.review.body].forEach(function (part) {
+        var toks = tokens(normalize(part));
+        toks.forEach(function (t) { grams.push(t); });
+        for (var i = 0; i + 1 < toks.length; i++) grams.push(toks[i] + ' ' + toks[i + 1]);
+      });
       var seen = {};
       grams.forEach(function (g) {
         if (seen[g]) return; // frecuencia documental: una vez por reseña
@@ -472,7 +475,7 @@
     var fromAmazon = books.filter(function (b) { return b.ratingsTotal != null && b.metaSource === 'amazon'; }).length;
     var confRatings = fromAmazon >= Math.min(5, books.length) ? 'alta'
       : market.booksWithRatings >= 3 ? 'media' : 'baja';
-    var fmt = function (n) { return n == null ? '—' : Number(n).toLocaleString('es-ES'); };
+    var fmt = function (n) { return n == null ? '—' : Number(n).toLocaleString('es-ES', { maximumFractionDigits: 2 }); };
 
     // 1. Demanda
     if (market.booksWithRatings) {
@@ -504,7 +507,7 @@
       parts.push({ id: 'competencia', label: 'Competencia', score: Math.round((1 - strength) * 100),
         weight: WEIGHTS.competencia, confidence: confRatings,
         detail: 'Líder con ' + fmt(market.topBook.ratings) + ' valoraciones; ' + Math.round(big * 100) +
-          ' % de peso de editoriales grandes o especializadas; nota media ponderada ' + (market.avgRatingWeighted || '—') + '.',
+          ' % de peso de editoriales grandes o especializadas; nota media ponderada ' + fmt(market.avgRatingWeighted) + '.',
         help: 'Puntuación alta = competencia más débil o más fácil de superar.' });
     } else {
       parts.push({ id: 'competencia', label: 'Competencia', score: null, weight: WEIGHTS.competencia,
@@ -527,7 +530,7 @@
       var c2 = market.pctCriticalRatings / 100;
       parts.push({ id: 'hueco', label: 'Hueco por cubrir', score: Math.round(clamp01(c2 / 0.30) * 100),
         weight: WEIGHTS.hueco, confidence: 'media',
-        detail: market.pctCriticalRatings + ' % de valoraciones de 1-3★ según los histogramas de Amazon.',
+        detail: fmt(market.pctCriticalRatings) + ' % de valoraciones de 1-3★ según los histogramas de Amazon.',
         help: 'Con las reseñas importadas se afina con las quejas concretas.' });
     } else {
       parts.push({ id: 'hueco', label: 'Hueco por cubrir', score: null, weight: WEIGHTS.hueco,
@@ -551,7 +554,7 @@
       var p = clamp01((market.printPrice.median - 10) / (35 - 10));
       parts.push({ id: 'precio', label: 'Margen de precio', score: Math.round(p * 100), weight: WEIGHTS.precio,
         confidence: market.printPrice.n >= 4 ? 'media' : 'baja',
-        detail: 'Precio mediano en papel: ' + market.printPrice.median + ' US$ (' + market.printPrice.n + ' libros).',
+        detail: 'Precio mediano en papel: ' + fmt(market.printPrice.median) + ' US$ (' + market.printPrice.n + ' libros).',
         help: 'Precios altos de la competencia dejan sitio a una alternativa más económica.' });
     } else {
       parts.push({ id: 'precio', label: 'Margen de precio', score: null, weight: WEIGHTS.precio,
@@ -610,7 +613,7 @@
     return out;
   }
 
-  var META_FIELDS = ['title', 'subtitle', 'authors', 'cover', 'rating', 'ratingsTotal', 'reviewsWithText',
+  var META_FIELDS = ['title', 'subtitle', 'authors', 'cover', 'coverData', 'rating', 'ratingsTotal', 'reviewsWithText',
     'histogram', 'price', 'formats', 'formatLine', 'pages', 'publisher', 'publicationDate', 'language',
     'isbn10', 'isbn13', 'bestSellersRank', 'customersSay', 'aspects'];
 

@@ -87,7 +87,8 @@
   function cover(book, size) {
     var box = h('div', { class: 'cover' + (size === 'lg' ? ' lg' : ''), role: 'img', 'aria-label': 'Portada de ' + (book.title || book.asin) });
     box.appendChild(generatedCover(book));
-    var url = root.KDP_OFFLINE_COVERS ? null : coverUrl(book);
+    // coverData: miniatura incrustada por el extractor (sirve también en claude.ai, donde no cargan imágenes externas).
+    var url = book.coverData && /^data:image\//.test(book.coverData) ? book.coverData : root.KDP_OFFLINE_COVERS ? null : coverUrl(book);
     if (url) {
       var img = h('img', { alt: '', loading: 'lazy', referrerpolicy: 'no-referrer' });
       img.addEventListener('load', function () {

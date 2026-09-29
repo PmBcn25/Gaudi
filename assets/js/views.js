@@ -19,6 +19,7 @@
     return AMAZON + '/-/es/portal/customer-reviews/' + b.asin + '/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews';
   }
   function isApprox(b) { return b.metaSource !== 'amazon'; }
+  function pct(v, d) { return v == null ? '—' : U.fmtNum(v, d == null ? (Math.round(v) === v ? 0 : 1) : d) + ' %'; }
   function mainPrice(b) {
     var list = b.prices || [];
     if (b.price && b.price.amount != null && b.metaSource === 'amazon') return b.price;
@@ -322,7 +323,7 @@
       { label: 'Nota media ponderada', value: m.avgRatingWeighted == null ? '—' : U.fmtRating(m.avgRatingWeighted) + '★', detail: 'por número de valoraciones' },
       { label: 'Precio mediano en papel', value: m.printPrice.median == null ? '—' : U.fmtMoney(m.printPrice.median), detail: m.printPrice.n + ' libros con precio' },
       { label: 'Libros de 5 años o más', value: m.ageYears.older5 + ' de ' + m.ageYears.n, detail: 'antigüedad mediana ' + U.fmtNum(m.ageYears.median, 1) + ' años' },
-      { label: 'Reseñas importadas', value: U.fmtNum(ctx.res.reviewCount), detail: ctx.hasReviews ? (m.pctCriticalReviews != null ? m.pctCriticalReviews + ' % de 1-3★' : '') : 'pendiente de extraer' }
+      { label: 'Reseñas importadas', value: U.fmtNum(ctx.res.reviewCount), detail: ctx.hasReviews ? (m.pctCriticalReviews != null ? pct(m.pctCriticalReviews) + ' de 1-3★' : '') : 'pendiente de extraer' }
     ];
     main.appendChild(h('section', { 'aria-label': 'Cifras clave' }, U.kpiGrid(kpis)));
 
@@ -492,8 +493,8 @@
     if (st && st.extracted) {
       var gA = h('div'), gB = h('div');
       main.appendChild(U.section('Sus reseñas en números', null, [
-        U.kpiGrid([['Reseñas importadas', U.fmtNum(st.extracted)], ['Positivas (4-5★)', st.pctPos + ' %'], ['Negativas (1-2★)', st.pctNeg + ' %'],
-          ['Compra verificada', (st.verifiedPct == null ? '—' : st.verifiedPct + ' %')], ['Última reseña', U.fmtDate(st.lastDate)], ['Últimos 12 meses', U.fmtNum(st.last12m)]]
+        U.kpiGrid([['Reseñas importadas', U.fmtNum(st.extracted)], ['Positivas (4-5★)', pct(st.pctPos)], ['Negativas (1-2★)', pct(st.pctNeg)],
+          ['Compra verificada', pct(st.verifiedPct)], ['Última reseña', U.fmtDate(st.lastDate)], ['Últimos 12 meses', U.fmtNum(st.last12m)]]
           .map(function (k) { return { label: k[0], value: k[1] }; })),
         h('div', { class: 'grid grid-2' }, gA, gB)]));
       var rows = st.themes.filter(function (t) { return t.praise + t.pain; }).slice(0, 10).map(function (t) { return { label: t.short, praise: t.praise, pain: t.pain }; });
@@ -704,7 +705,7 @@
       { k: 'val', label: 'Valoraciones', n: true, get: function (b) { return b.ratingsTotal || 0; }, render: function (b) { return ratingsText(b); } },
       { k: 'gr', label: 'Goodreads', n: true, get: function (b) { return b.goodreads ? b.goodreads.rating : 0; }, render: function (b) { return b.goodreads ? U.fmtNum(b.goodreads.rating, 2) : '—'; } },
       { k: 'imp', label: 'Reseñas imp.', n: true, get: function (b) { return ctx.res.perBook[b.asin].extracted; }, render: function (b) { return U.fmtNum(ctx.res.perBook[b.asin].extracted); } },
-      { k: 'crit', label: '% 1-3★', n: true, get: function (b) { return ctx.res.perBook[b.asin].pctCritical || 0; }, render: function (b) { var v = ctx.res.perBook[b.asin].pctCritical; return v == null ? '—' : v + ' %'; } }
+      { k: 'crit', label: '% 1-3★', n: true, get: function (b) { return ctx.res.perBook[b.asin].pctCritical || 0; }, render: function (b) { var v = ctx.res.perBook[b.asin].pctCritical; return pct(v); } }
     ];
     var sortKey = U.loadPref('cmpSort', 'val'), dir = U.loadPref('cmpDir', -1);
     var wrap = h('div', { class: 'table-wrap' });
@@ -760,7 +761,7 @@
       var t = themeStat(ctx, sel.value);
       box.textContent = '';
       if (!t) return;
-      box.appendChild(U.kpiGrid([['Reseñas que lo mencionan', U.fmtNum(t.mentions) + ' (' + t.share + ' %)'], ['Nota media de esas reseñas', U.fmtRating(t.avgRating) + '★'], ['Elogios', U.fmtNum(t.praise)], ['Quejas', U.fmtNum(t.complaint)], ['Deseos («me hubiera gustado…»)', U.fmtNum(t.wish)]]
+      box.appendChild(U.kpiGrid([['Reseñas que lo mencionan', U.fmtNum(t.mentions) + ' (' + pct(t.share) + ')'], ['Nota media de esas reseñas', U.fmtRating(t.avgRating) + '★'], ['Elogios', U.fmtNum(t.praise)], ['Quejas', U.fmtNum(t.complaint)], ['Deseos («me hubiera gustado…»)', U.fmtNum(t.wish)]]
         .map(function (k) { return { label: k[0], value: k[1] }; })));
       var cols = [['praise', 'Elogios', 'pos'], ['complaint', 'Quejas', 'neg'], ['wish', 'Deseos y carencias', 'neg']];
       box.appendChild(h('div', { class: 'grid grid-3' }, cols.map(function (c) {
@@ -1250,10 +1251,11 @@
     }
     if (pr) {
       var block = function (title, items) {
-        return h('section', { class: 'card' }, h('h3', null, title), h('div', { class: 'stack' }, items.map(function (i) {
+        return h('section', { class: 'card' }, h('h3', null, title), h('div', { class: 'stack-lg' }, items.map(function (i) {
           var st = i.status === 'incluido' ? 'good' : i.status === 'propuesta' ? 'none' : 'warn';
-          return h('div', { class: 'row', style: { justifyContent: 'space-between', flexWrap: 'nowrap', alignItems: 'start' } },
-            h('span', null, i.url ? U.extLink(i.url, i.text) : i.text), h('span', { class: 'chip' }, U.status(st, i.status)));
+          return h('div', { class: 'stack', style: { gap: '4px' } },
+            h('span', null, h('span', { class: 'chip' }, U.status(st, i.status))),
+            h('span', null, i.text, i.url ? [' ', U.extLink(i.url, i.linkText || 'enlace')] : null));
         })));
       };
       main.appendChild(h('div', { class: 'grid grid-3' }, block('Más datos para la portada', pr.homeData), block('Más enlaces', pr.links), block('Más herramientas', pr.tools)));

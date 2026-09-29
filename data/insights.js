@@ -131,7 +131,7 @@ window.KDP_INSIGHTS = {
   avatars: [
     {
       id: 'viajero', name: 'El viajero que prepara la visita', primary: true,
-      profile: 'Adulto de 35 a 65 años, sobre todo de EE. UU. y Reino Unido. Compra entre 2 y 8 semanas antes del viaje; lee en papel o en tableta.',
+      profile: 'Adulto que prepara un viaje a Barcelona, sobre todo de EE. UU. (primer país de origen de los visitantes) y otros países de habla inglesa. Compra en las semanas previas, a menudo al reservar las entradas; lee en papel o en tableta.',
       wants: ['Saber qué va a ver y en qué fijarse', 'Símbolos explicados en sencillo', 'Planos y un recorrido claro', 'Datos al día (torre de 2026, entradas)'],
       frustrations: ['Libros solo de texto', 'Prosa densa que da cosas por sabidas', 'Información desfasada'],
       triggers: ['Reservar las entradas', 'Un viaje o crucero por el Mediterráneo', 'Noticias del centenario'],
@@ -455,8 +455,8 @@ window.KDP_INSIGHTS = {
     ],
     links: [
       { text: 'Ficha y página de reseñas de cada libro en Amazon.', status: 'incluido' },
-      { text: 'Calculadora de regalías orientativa (en Posicionamiento) y, para las cifras exactas, la de la ayuda de KDP.', url: 'https://kdp.amazon.com/', status: 'incluido' },
-      { text: 'Normas de contenido de KDP, incluida la declaración de contenido generado con IA (en la ayuda de KDP).', url: 'https://kdp.amazon.com/', status: 'incluido' },
+      { text: 'Calculadora de regalías orientativa (en Título y posicionamiento); para las cifras exactas, la calculadora de KDP.', url: 'https://kdp.amazon.com/', linkText: 'KDP ↗', status: 'incluido' },
+      { text: 'Normas de contenido de KDP, incluida la declaración de contenido generado con IA.', url: 'https://kdp.amazon.com/', linkText: 'KDP ↗', status: 'incluido' },
       { text: 'Búsqueda en Amazon con cada palabra clave propuesta.', status: 'incluido' }
     ],
     tools: [
