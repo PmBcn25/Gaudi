@@ -1,0 +1,787 @@
+{
+  "_nota": "Señales públicas encontradas con un buscador web el 2026-09-29. 'cita' = texto que el buscador mostró entre comillas atribuido a esa página; 'paráfrasis' = resumen del buscador. No se han podido verificar en la página en vivo (acceso bloqueado desde el entorno de trabajo). Las traducciones al español son nuestras. No sustituyen a las reseñas extraídas de Amazon.",
+  "consultado": "2026-09-29",
+  "signals": [
+    {
+      "asin": "8484788946",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "This book is great for those who want to really go into the details of La Sagrada Familia",
+      "es": "Este libro es genial para quien quiera entrar de verdad en los detalles de la Sagrada Familia",
+      "themes": [
+        "profundidad"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "media"
+    },
+    {
+      "asin": "8484788946",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "It is a stunning book and a nice size",
+      "es": "Es un libro impresionante y de buen tamaño",
+      "themes": [
+        "formato",
+        "regalo"
+      ],
+      "source": "https://www.amazon.com.au/Sagrada-Fam%C3%ADlia-Cathedral-light/dp/8484788946",
+      "confidence": "media"
+    },
+    {
+      "asin": "8484788946",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "gives an intimate description of the building's existence in light, through the seasons and through each day",
+      "es": "describe de forma íntima cómo vive el edificio con la luz, a lo largo de las estaciones y de cada día",
+      "themes": [
+        "simbolismo"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "baja"
+    },
+    {
+      "asin": "8484788946",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Stunning photography",
+      "es": "Fotografía impresionante",
+      "themes": [
+        "fotos"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "baja"
+    },
+    {
+      "asin": "8484788946",
+      "type": "positivo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Buena combinación de fotos a color, pies de foto y texto; lo compraron para un familiar mayor que nunca pudo visitar el templo.",
+      "es": null,
+      "themes": [
+        "fotos",
+        "regalo"
+      ],
+      "source": "https://www.amazon.es/Sagrada-Fam%C3%ADlia-Cathedral-TRIANGLE-photographs/dp/8484788946",
+      "confidence": "baja"
+    },
+    {
+      "asin": "8484788946",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Her focus on light ignores gravity, the handling of which was Gaudi's structural genius.",
+      "es": "Su foco en la luz ignora la gravedad, cuyo manejo fue el genio estructural de Gaudí.",
+      "themes": [
+        "arquitectura"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "media"
+    },
+    {
+      "asin": "8484788946",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "finished the book, but the obsession with religion, not architecture was very disappointing to me personally.",
+      "es": "terminé el libro, pero la obsesión por la religión y no por la arquitectura me decepcionó mucho.",
+      "themes": [
+        "simbolismo",
+        "arquitectura"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "media"
+    },
+    {
+      "asin": "8484788946",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "La autora repite la teología de la luz en lugar de explicar la arquitectura.",
+      "es": null,
+      "themes": [
+        "simbolismo",
+        "repetitivo"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "baja"
+    },
+    {
+      "asin": "8484788946",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "La pegatina de la portada dejó un residuo pegajoso.",
+      "es": null,
+      "themes": [
+        "envio"
+      ],
+      "source": "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "An engrossing, vivid inquiry into a man and his magisterial creation.",
+      "es": "Una indagación absorbente y vívida sobre un hombre y su creación magistral.",
+      "themes": [
+        "redaccion",
+        "gaudi_persona"
+      ],
+      "source": "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/the-sagrada-familia/",
+      "confidence": "media"
+    },
+    {
+      "asin": "1632867818",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "Van Hensbergen's rich, poetic prose is perfectly suited to describe this unprecedented work of art.",
+      "es": "La prosa rica y poética de van Hensbergen encaja perfectamente para describir esta obra de arte sin precedentes.",
+      "themes": [
+        "redaccion"
+      ],
+      "source": "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/the-sagrada-familia/",
+      "confidence": "media"
+    },
+    {
+      "asin": "1632867818",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "Van Hensbergen serves as an enthusiastic guide in this more than thorough account of one of the world's most eccentric and stunning buildings.",
+      "es": "Van Hensbergen hace de guía entusiasta en este relato más que minucioso de uno de los edificios más excéntricos y asombrosos del mundo.",
+      "themes": [
+        "profundidad"
+      ],
+      "source": "https://www.publishersweekly.com/9781632867810",
+      "confidence": "media"
+    },
+    {
+      "asin": "1632867818",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "this biography of this basilica is an essential read",
+      "es": "esta biografía de la basílica es una lectura imprescindible",
+      "themes": [
+        "historia"
+      ],
+      "source": "https://www.goodreads.com/book/show/31451074-the-sagrada-familia",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "an informative but not exhaustive/boring book on Gaudi's masterpiece",
+      "es": "un libro informativo, pero no exhaustivo ni aburrido, sobre la obra maestra de Gaudí",
+      "themes": [
+        "profundidad",
+        "redaccion"
+      ],
+      "source": "https://www.goodreads.com/book/show/31451074-the-sagrada-familia",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "wholly lacks vital elements, such as illustrations - not a diagram, photo, or line drawing anywhere",
+      "es": "carece por completo de elementos vitales, como ilustraciones: ni un diagrama, ni una foto, ni un dibujo en ninguna parte",
+      "themes": [
+        "fotos",
+        "planos"
+      ],
+      "source": "https://www.goodreads.com/book/show/31451074-the-sagrada-familia",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Architecture is a visual art, and anything written on the subject is expected to be profusely illustrated.",
+      "es": "La arquitectura es un arte visual y se espera que todo lo que se escriba sobre ella esté profusamente ilustrado.",
+      "themes": [
+        "fotos",
+        "planos"
+      ],
+      "source": "https://www.goodreads.com/book/show/36055822",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "expensive ($36/hardback) for fewer than 200 pp.",
+      "es": "caro (36 $ en tapa dura) para menos de 200 páginas.",
+      "themes": [
+        "precio"
+      ],
+      "source": "https://www.goodreads.com/book/show/31451074-the-sagrada-familia",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "massively disappointed in this book",
+      "es": "enormemente decepcionado con este libro",
+      "themes": [],
+      "source": "https://www.goodreads.com/book/show/31451074-the-sagrada-familia",
+      "confidence": "baja"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "Art historian takes readers on a words-only tour of the Sagrada Família",
+      "es": "Un historiador del arte lleva a los lectores de visita por la Sagrada Família solo con palabras",
+      "themes": [
+        "fotos"
+      ],
+      "source": "https://www.ncronline.org/news/book-reviews/art-historian-takes-readers-words-only-tour-sagrada-fam-lia",
+      "confidence": "alta"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "The approach, though effective, is somewhat disorganized and confusing.",
+      "es": "El enfoque, aunque eficaz, es algo desordenado y confuso.",
+      "themes": [
+        "organizacion"
+      ],
+      "source": "https://www.ncronline.org/news/book-reviews/art-historian-takes-readers-words-only-tour-sagrada-fam-lia",
+      "confidence": "media"
+    },
+    {
+      "asin": "1632867818",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Sin ilustraciones salvo la foto de la sobrecubierta: hay que tener una tableta a mano para buscar las imágenes. Queja recurrente.",
+      "es": null,
+      "themes": [
+        "fotos"
+      ],
+      "source": "https://www.goodreads.com/book/show/35529686-the-sagrada-familia",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "A terrifically stirring biography",
+      "es": "Una biografía tremendamente conmovedora",
+      "themes": [
+        "historia",
+        "emocion"
+      ],
+      "source": "https://www.amazon.nl/Gaudi-Biography-Gijs-Van-Hensbergen/dp/0060935634",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "meticulously researched, elegantly organized, fluidly, lucidly written",
+      "es": "meticulosamente documentada, elegantemente organizada, escrita con fluidez y lucidez",
+      "themes": [
+        "profundidad",
+        "organizacion",
+        "redaccion"
+      ],
+      "source": "https://www.amazon.nl/Gaudi-Biography-Gijs-Van-Hensbergen/dp/0060935634",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "evokes specific people, places, and buildings with quick, confident strokes",
+      "es": "evoca personas, lugares y edificios concretos con trazos rápidos y seguros",
+      "themes": [
+        "redaccion"
+      ],
+      "source": "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/gaudi/",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "positivo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Riguroso pero escrito para el gran público; los dibujos de época en blanco y negro muestran cómo veían a Gaudí sus contemporáneos.",
+      "es": null,
+      "themes": [
+        "profundidad",
+        "redaccion"
+      ],
+      "source": "https://dogmatics.wordpress.com/2017/09/06/review-gaudi-a-biography/",
+      "confidence": "baja"
+    },
+    {
+      "asin": "0060935634",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "writes in the disjointed, gnomic style of one so immersed in his subject that he has lost all sense of his audience",
+      "es": "escribe con el estilo inconexo y críptico de quien está tan inmerso en su tema que ha perdido de vista a su público",
+      "themes": [
+        "redaccion",
+        "organizacion"
+      ],
+      "source": "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/gaudi/",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "Readers, then, should be reasonably well-acquainted with Gaudí's career before sampling this substantial but lumpy stew.",
+      "es": "Así que conviene conocer bastante bien la carrera de Gaudí antes de probar este guiso sustancioso pero grumoso.",
+      "themes": [
+        "redaccion"
+      ],
+      "source": "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/gaudi/",
+      "confidence": "media"
+    },
+    {
+      "asin": "0060935634",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Fotos escasas, casi todas en blanco y negro y lejos del texto de cada edificio: los lectores acaban buscando las obras en internet.",
+      "es": null,
+      "themes": [
+        "fotos",
+        "organizacion"
+      ],
+      "source": "https://www.goodreads.com/book/show/1367113",
+      "confidence": "baja"
+    },
+    {
+      "asin": "0060935634",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "El foco en las raíces nacionalistas y católicas no explica la parte ecléctica y fantástica de su obra.",
+      "es": null,
+      "themes": [
+        "historia",
+        "simbolismo"
+      ],
+      "source": "https://www.goodreads.com/book/show/749413.Gaudi",
+      "confidence": "baja"
+    },
+    {
+      "asin": "0060935634",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Difícil de seguir si no has estado en Barcelona o no conoces sus obras principales.",
+      "es": null,
+      "themes": [
+        "organizacion",
+        "visita"
+      ],
+      "source": "https://dogmatics.wordpress.com/2017/09/06/review-gaudi-a-biography/",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Absolutely stunning coffee table book. Sturdy, beautiful thick pages and lovely contents",
+      "es": "Un libro de mesa absolutamente impresionante. Robusto, con páginas gruesas y preciosas y un contenido encantador",
+      "themes": [
+        "impresion",
+        "formato"
+      ],
+      "source": "https://www.amazon.co.uk/Gaudi-Complete-Works-Rainer-Zerbst/dp/3836566192",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Probably the best book on Gaudi and his work you can find!",
+      "es": "¡Probablemente el mejor libro sobre Gaudí y su obra que puedas encontrar!",
+      "themes": [],
+      "source": "https://www.amazon.com/Gaud%C3%AD-Complete-Works-40th-Anniversary/dp/3836566192",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Hundreds of photos, plans and illustrations",
+      "es": "Cientos de fotos, planos e ilustraciones",
+      "themes": [
+        "fotos",
+        "planos"
+      ],
+      "source": "https://www.amazon.com.au/Gaud%C3%AD-Complete-Works-40th-Anniversary/dp/3836566192",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Full of amazing photographs, highly informative yet completely accessible text, not at all high-brow, high quality binding... and amazing value for money",
+      "es": "Lleno de fotografías increíbles, texto muy informativo pero totalmente accesible, nada elitista, encuadernación de gran calidad… y una relación calidad-precio asombrosa",
+      "themes": [
+        "fotos",
+        "redaccion",
+        "impresion",
+        "precio"
+      ],
+      "source": "https://www.amazon.de/-/en/Gaud%C3%AD-Complete-Works-Rainer-Zerbst/dp/3836564467",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "This is a much better book than any I've seen in Barcelona about their favorite architect. Very comprehensive.",
+      "es": "Es mucho mejor que cualquiera de los que vi en Barcelona sobre su arquitecto favorito. Muy completo.",
+      "themes": [
+        "profundidad",
+        "visita"
+      ],
+      "source": "https://www.taschen.com/en/books/architecture-design/49376/gaudi-the-complete-works-45th-ed/",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836566192",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "A little on the small side",
+      "es": "Un poco pequeño",
+      "themes": [
+        "formato"
+      ],
+      "source": "https://booksrun.com/9783836566193-gaudi-the-complete-works-40th-anniversary-edition",
+      "confidence": "media"
+    },
+    {
+      "asin": "3836566192",
+      "type": "negativo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "However, the pages are absolute fingerprint magnets.",
+      "es": "Eso sí, las páginas son auténticos imanes de huellas.",
+      "themes": [
+        "impresion"
+      ],
+      "source": "https://www.taschen.com/en/books/architecture-design/43429/gaudi-the-complete-works/",
+      "confidence": "media"
+    },
+    {
+      "asin": "3836566192",
+      "type": "negativo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Funciona como libro de mesa, pero después de más de 30 años de ediciones puede que ya existan volúmenes mejores.",
+      "es": null,
+      "themes": [
+        "actualidad"
+      ],
+      "source": "https://www.amazon.com/Gaud%C3%AD-Complete-Works-40th-Anniversary/dp/3836566192",
+      "confidence": "baja"
+    },
+    {
+      "asin": "8491031987",
+      "type": "positivo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Gráficos excelentes, fotografía soberbia y texto en fragmentos breves pero completo.",
+      "es": null,
+      "themes": [
+        "fotos",
+        "planos",
+        "organizacion"
+      ],
+      "source": "https://www.amazon.co.uk/Basilica-Architecture-Hardcover-illustrations-978-84-9103-198-7/dp/8491031987",
+      "confidence": "baja"
+    },
+    {
+      "asin": "B01FN37I44",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "crítica",
+      "text": "una apasionante crónica sentimental de la geografía mediterránea fusionada con una rigurosa cartografía de las obras de Gaudí",
+      "es": null,
+      "themes": [
+        "historia",
+        "redaccion"
+      ],
+      "source": "https://quelibroleo.com/la-sagrada-familia-el-paraiso-terrenal-de-gaudi",
+      "confidence": "media"
+    },
+    {
+      "asin": "B01FN37I44",
+      "type": "positivo",
+      "kind": "paráfrasis",
+      "who": "crítica",
+      "text": "Una inteligente reconstrucción de la «biografía» de un edificio icónico y del hombre que lo construyó.",
+      "es": null,
+      "themes": [
+        "historia"
+      ],
+      "source": "https://www.elespanol.com/el-cultural/letras/20160610/sagrada-familia-paraiso-terrenal-gaudi/131487665_0.html",
+      "confidence": "media"
+    },
+    {
+      "asin": "3836560283",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Very nice pictures with good reading about everything Gaudi has ever done and what inspired him to begin with.",
+      "es": "Fotos muy bonitas y buena lectura sobre todo lo que hizo Gaudí y lo que le inspiró.",
+      "themes": [
+        "fotos",
+        "historia"
+      ],
+      "source": "https://www.amazon.com/Gaud%C3%AD-Basic-Maria-Antonietta-Crippa/dp/3836560283",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836560283",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "It explain in very few pages (less than 100) all the basic thing to know about Gaudi.",
+      "es": "Explica en muy pocas páginas (menos de 100) todo lo básico que hay que saber sobre Gaudí.",
+      "themes": [
+        "profundidad",
+        "formato"
+      ],
+      "source": "https://www.taschen.com/en/books/architecture-design/49210/gaudi/",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836560283",
+      "type": "positivo",
+      "kind": "cita",
+      "who": "lector",
+      "text": "Like all the basic architecture books, Gaudi is must have!",
+      "es": "Como todos los libros de arquitectura básica, ¡este de Gaudí es imprescindible!",
+      "themes": [],
+      "source": "https://www.taschen.com/en/books/architecture-design/49210/gaudi/",
+      "confidence": "baja"
+    },
+    {
+      "asin": "3836560283",
+      "type": "positivo",
+      "kind": "paráfrasis",
+      "who": "lector",
+      "text": "Se lee en unas dos horas; bonitas fotos y planos; texto descriptivo con contexto histórico y colaboradores.",
+      "es": null,
+      "themes": [
+        "fotos",
+        "planos",
+        "historia"
+      ],
+      "source": "https://www.goodreads.com/book/show/26507352",
+      "confidence": "baja"
+    }
+  ],
+  "competitors": [
+    {
+      "title": "SAGRADA FAMÍLIA The Cathedral of Light: Gaudí's Vision Finally Completed",
+      "author": "Pranav Pandya",
+      "angle": "Espiritual + gancho de la finalización en 2026",
+      "indie": true,
+      "note": "Título casi idéntico al de Triangle",
+      "source": "https://www.amazon.com/SAGRADA-FAM%C3%8DLIA-Cathedral-Light-Completed/dp/B0GSTZJ91P",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Sagrada Familia: A Visual Journey Through Barcelona's Sacred Masterpiece",
+      "author": "Sandra Owen",
+      "angle": "Fotolibro",
+      "indie": true,
+      "note": "Sin valoraciones visibles",
+      "source": "https://us.amazon.com/Sagrada-Familia-Masterpiece-Photography-Architecture/dp/B0H251W9Q4",
+      "ratingsChecked": true
+    },
+    {
+      "title": "The Sagrada Familia of Gaudí: 550 Pages and 270 Hyperrealistic Full-Color Images",
+      "author": "Gaudí Visual Archive",
+      "angle": "Archivo visual",
+      "indie": true,
+      "note": "«Hiperrealistas» sugiere imágenes generadas (inferencia)",
+      "source": "https://www.amazon.com/Sagrada-Familia-Gaud%C3%AD-Hyperrealistic-Extraordinary/dp/B0H4WF9CWP",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Sagrada Familia: A Picture Book of Barcelona's Masterpiece",
+      "author": "Fabio Hilmes",
+      "angle": "Libro de imágenes (39 fotos)",
+      "indie": true,
+      "note": "Sin valoraciones visibles",
+      "source": "https://www.amazon.com/Sagrada-Familia-Picture-Barcelonas-Masterpiece/dp/B0G2JTMFSL",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Gaudi architecture coloring book: bold and easy mosaic designs and organic curves for adults",
+      "author": "AI studio, amyIto",
+      "angle": "Libro de colorear para adultos",
+      "indie": true,
+      "note": "Firmado por un «AI studio»",
+      "source": "https://www.amazon.com/gaudi-architecture-coloring-book-designes/dp/B0H1X746QV",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Spanish Architecture Coloring Book for Adults",
+      "author": "PYM Editorial",
+      "angle": "Libro de colorear para adultos",
+      "indie": true,
+      "note": "Gaudí, Alhambra y catedrales",
+      "source": "https://www.amazon.com/Spanish-Architecture-Coloring-Book-Adults/dp/B0FQ5CHJ1P",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Barcelona Coloring Book: Gaudí's Masterpieces, Mediterranean Charm, and Catalan Culture",
+      "author": "ouchul hwang",
+      "angle": "Libro de colorear para adultos",
+      "indie": true,
+      "note": "Sin valoraciones visibles",
+      "source": "https://us.amazon.com/Barcelona-Coloring-Book-Masterpieces-Mediterranean/dp/B0HD6P2D11",
+      "ratingsChecked": true
+    },
+    {
+      "title": "Gaudí–Architect of Imagination",
+      "author": "Susan B. Katz, ilustr. Linda Schwalbe",
+      "angle": "Álbum infantil",
+      "indie": false,
+      "note": "Editorial tradicional",
+      "source": "https://www.simonandschuster.com/books/Gaudi-Architect-of-Imagination/Susan-B-Katz/9780735844872",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Colouring Book Antoni Gaudi",
+      "author": "Prestel",
+      "angle": "Colorear infantil",
+      "indie": false,
+      "note": "Editorial de arte",
+      "source": "https://www.amazon.com/Colouring-Antoni-Gaudi-Prestel-Publishing/dp/3791372033",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Sagrada Familia: Gaudi's Unfinished Masterpiece. Geometry, Construction and Site",
+      "author": "Oscar Riera Ojeda, Fabian Llonch, George Ranalli",
+      "angle": "Técnico: geometría y construcción",
+      "indie": false,
+      "note": "Público profesional",
+      "source": "https://www.amazon.com/Sagrada-Familia-Unfinished-Masterpiece-Construction/dp/9881225248",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Guía visual Sagrada Familia (inglés)",
+      "author": "Dosde",
+      "angle": "Guía visual para la visita",
+      "indie": false,
+      "note": "Se vende en la tienda del templo",
+      "source": "https://www.amazon.com/Basilica-Sagrada-Familia-converted-universal/dp/8496783960",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Symbology of the Temple of the Sagrada Família",
+      "author": "Triangle",
+      "angle": "Simbología y vidrieras",
+      "indie": false,
+      "note": "Editorial local especializada",
+      "source": "https://triangle.cat/en/producto/symbology-of-the-temple-of-the-sagrada-familia/",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Gaudí. La obra completa (español)",
+      "author": "Rainer Zerbst (TASCHEN)",
+      "angle": "Obra completa en español",
+      "indie": false,
+      "note": "Ranking muy bajo en Amazon.com (n.º 1,67 M en Libros)",
+      "source": "https://us.amazon.com/Gaud%C3%AD-obra-completa-45th-Spanish/dp/3836566176",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Antoni Gaudí: Una biografía",
+      "author": "Gijs van Hensbergen",
+      "angle": "Biografía en español",
+      "indie": false,
+      "note": "También en Debolsillo",
+      "source": "https://www.amazon.com/Antoni-Gaud%C3%AD-biograf%C3%ADa-Biography-Spanish/dp/8430628983",
+      "ratingsChecked": null
+    },
+    {
+      "title": "Sagrada Familia: A Collection of 40 Scenic Photographs",
+      "author": "Leo Carter",
+      "angle": "Fotolibro (40 páginas, mayo de 2026)",
+      "indie": true,
+      "ratingsChecked": false,
+      "note": "Poco contenido",
+      "source": "https://www.amazon.com/Sagrada-Familia-Collection-Photographs-Showcasing/dp/B0H1GTV3ZY"
+    },
+    {
+      "title": "Sagrada Familia: A Luxury Coffee Table Book of Iconic Landmarks",
+      "author": "Mila Sky",
+      "angle": "Fotolibro (41 páginas, febrero de 2026)",
+      "indie": true,
+      "ratingsChecked": false,
+      "note": "Poco contenido",
+      "source": "https://www.amazon.com/Sagrada-Familia-Luxury-Coffee-Landmarks/dp/B0GQPMDFJH"
+    },
+    {
+      "title": "Sagrada Família Cathedral: A Perfect Coffee Table Picture Book",
+      "author": "Katia Sar",
+      "angle": "Fotolibro (39 imágenes, sin texto)",
+      "indie": true,
+      "ratingsChecked": false,
+      "note": "Poco contenido",
+      "source": "https://www.amazon.com/Sagrada-Fam%C3%ADlia-Cathedral-Perfect-Picture/dp/B0G3LN584H"
+    },
+    {
+      "title": "Sagrada Família Complete Guide",
+      "author": "Adrian Miles Brooks",
+      "angle": "Guía de visita",
+      "indie": true,
+      "ratingsChecked": false,
+      "note": "Competidor directo del enfoque de guía: revisa sus reseñas",
+      "source": "https://www.amazon.com/Sagrada-Fam%C3%ADlia-Complete-Guide-Experience/dp/B0G87KF4B4"
+    },
+    {
+      "title": "Barcelona Travel Guide 2025-2026",
+      "author": "Paco Gomez",
+      "angle": "Guía de viaje de Barcelona",
+      "indie": true,
+      "ratingsChecked": false,
+      "note": "Guía general de la ciudad",
+      "source": "https://www.amazon.com/Barcelona-Travel-Guide-2025-2026-Heartbeat/dp/B0FPH9RT6W"
+    }
+  ]
+}

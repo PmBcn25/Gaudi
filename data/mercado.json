@@ -1,0 +1,74 @@
+{
+  "_nota": "Contexto de mercado recopilado con un buscador web el 2026-09-29. Cada dato lleva su fuente; los marcados como 'sin verificar' no se han podido contrastar.",
+  "consultado": "2026-09-29",
+  "kpis": [
+    { "id": "visitantes", "label": "Visitantes de la Sagrada Família en 2025", "value": "4.877.567", "detail": "Récord histórico; monumento más visitado de España", "source": "https://www.hosteltur.com/175053_la-sagrada-familia-marca-un-nuevo-record-casi-49-millones-de-visitantes-en-2025.html" },
+    { "id": "eeuu", "label": "Visitantes de EE. UU.", "value": "> 15 %", "detail": "Primer país de origen, por delante del resto de España, China y Francia", "source": "https://www.infobae.com/espana/viajes/2026/03/24/la-sagrada-familia-rompe-records-en-2025-con-casi-5-millones-de-visitantes-y-enamora-al-viajero-estadounidense/" },
+    { "id": "interes", "label": "Interés por la Sagrada Família", "value": "+150 %", "detail": "Dato de GetYourGuide frente al año anterior (2026)", "source": "https://www.thenewbarcelonapost.com/en/the-pope-and-the-gaudi-year-ignite-global-fascination-for-the-sagrada-familia/" },
+    { "id": "torre", "label": "Torre de Jesucristo", "value": "172,5 m", "detail": "Exterior terminado el 20-02-2026; bendecida el 10-06-2026. Iglesia más alta del mundo desde el 31-10-2025", "source": "https://www.vaticannews.va/en/church/news/2026-02/basilica-sagrada-familia-cross-completed-tower-of-jesus-christ.html" },
+    { "id": "torres", "label": "Torres construidas", "value": "14 de 18", "detail": "Faltan las 4 de la fachada de la Gloria", "source": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia" },
+    { "id": "final", "label": "Finalización del templo", "value": "≈ 2036", "detail": "«En un máximo de 10 años», según la Junta Constructora (22-09-2026)", "source": "https://www.religiondigital.org/arte/sagrada-familia-ve-avanzadas-negociaciones-fachada-gloria-centenario-gaudi_1_1467207.html" }
+  ],
+  "timeline": [
+    { "date": "2025-04-14", "text": "El papa Francisco declara Venerable a Gaudí.", "kind": "hito", "source": "https://www.vaticannews.va/en/vatican-city/news/2025-04/antoni-gaudi-gods-architect-declared-venerable.html" },
+    { "date": "2025-10-31", "text": "La Sagrada Família supera a la catedral de Ulm y pasa a ser la iglesia más alta del mundo (162,91 m).", "kind": "hito", "source": "https://www.euronews.com/culture/2025/10/31/spirit-in-the-sky-barcelonas-sagrada-familia-becomes-the-worlds-tallest-church" },
+    { "date": "2025-11-08", "text": "Inauguración oficial del Año Gaudí 2026 en Riudoms y Reus.", "kind": "evento", "source": "https://www.palaciodegaudi.es/2025/11/10/palacio-de-gaudi-inaugura-ano-gaudi-2026-riudoms-reus/" },
+    { "date": "2026-02-20", "text": "Se coloca el último brazo de la cruz: la Torre de Jesucristo alcanza su altura final de 172,5 m.", "kind": "hito", "source": "https://www.euronews.com/culture/2026/02/20/the-sagrada-familia-reaches-maximum-height-after-more-than-a-century" },
+    { "date": "2026-03-26", "text": "Reedición de la biografía de van Hensbergen en español (Taurus) con nuevo prólogo para el centenario.", "kind": "libro", "source": "https://www.elliberal.cat/2026/03/18/biografia-gaudi-centenario-2026-van-hensbergen/" },
+    { "date": "2026-06-10", "text": "Centenario de la muerte de Gaudí: León XIV reza ante su tumba, oficia misa en el templo y bendice la Torre de Jesucristo; unas 120.000 personas en la calle.", "kind": "hito", "source": "https://www.euronews.com/culture/2026/06/11/spectacular-opening-of-sagrada-familia-tower-draws-120000-people" },
+    { "date": "2026-06-17", "text": "Anunciado un gran biopic sobre Gaudí dirigido por Alejandro Monteverde (sin fecha de estreno).", "kind": "futuro", "source": "https://variety.com/2026/film/markets-festivals/alejandro-monteverde-gaudi-biopic-onza-fabrica-de-cine-1236781305/" },
+    { "date": "2026-09-22", "text": "El templo prevé terminar la obra «en un máximo de 10 años»; la escalinata de la fachada de la Gloria sigue sin acuerdo vinculante.", "kind": "hito", "source": "https://www.ultimahora.es/noticias/comunidades/2026/09/22/2713769/sagrada-familia-muy-avanzadas-negociaciones-barcelona-para-fachada-gloria.html" },
+    { "date": "2026-09-22", "text": "Abre «Codi Gaudí», experiencia inmersiva sobre proyectos que Gaudí nunca construyó (hasta el 31-01-2027).", "kind": "evento", "source": "https://www.elnacional.cat/es/barcelona/gaudi-inedito-experiencia-inmersiva-recupera-edificios-proyectados-pero-nunca-construidos_1698487_102.html" },
+    { "date": "2026-10-22", "text": "Congreso Internacional Gaudí 2026 en La Pedrera (22-24 de octubre).", "kind": "futuro", "source": "https://gaudi2026congress.cat/en/" },
+    { "date": "2026-12-31", "text": "Clausura del Año Gaudí prevista para finales de 2026 (fecha por confirmar).", "kind": "futuro", "source": "https://patrimoni.gencat.cat/ca/article/comenca-lany-gaudi-commemorar-el-centenari-de-la-mort-de-larquitecte" },
+    { "date": "2027-06-01", "text": "Mirador dentro de la cruz de la Torre de Jesucristo (unos 164 m): apertura esperada en 2027, sin confirmación oficial.", "kind": "futuro", "source": "https://www.catalannews.com/culture/item/sagrada-familia-jesus-christ-tower-cross-viewpoint-barcelona-19-september-2024" }
+  ],
+  "sections": [
+    {
+      "id": "obras",
+      "title": "Estado de las obras",
+      "items": [
+        { "text": "14 de las 18 torres están construidas: 8 de apóstoles (Natividad y Pasión), las 4 de los evangelistas, la de la Virgen (2021) y la de Jesucristo (2026). Faltan las 4 de la fachada de la Gloria.", "source": "https://tickets-sagradafamilia.co/what-to-see/sagrada-familia-towers/" },
+        { "text": "La fachada de la Gloria es la gran parte pendiente: esculturas, puertas, 4 torres y una escalinata sobre la calle Mallorca que exige cambiar el planeamiento y derribar edificios.", "source": "https://www.domusweb.it/en/news/2026/07/15/sagrada-familia-completion-demolitions-barcelona.html" },
+        { "text": "El trabajo interior de la Torre de Jesucristo sigue en 2027-2028; en la cruz irá un Agnus Dei de Andrea Mastrovito.", "source": "https://www.vaticannews.va/en/church/news/2026-02/basilica-sagrada-familia-cross-completed-tower-of-jesus-christ.html" }
+      ]
+    },
+    {
+      "id": "beatificacion",
+      "title": "Causa de beatificación",
+      "items": [
+        { "text": "Gaudí es Venerable desde el 14-04-2025. Para beatificarlo hace falta un milagro aprobado.", "source": "https://www.catholicworldreport.com/2025/04/14/pope-francis-declares-sagrada-familia-basilica-architect-antoni-gaudi-venerable/" },
+        { "text": "Se estudia la curación de un bebé catalán con tetralogía de Fallot; el cardenal Omella dijo en mayo de 2026 que el estudio estaba en «fase terminal».", "source": "https://www.infobae.com/espana/agencias/2026/05/07/el-arzobispo-de-barcelona-dice-que-el-estudio-del-milagro-de-gaudi-esta-en-fase-terminal/" },
+        { "text": "No hubo beatificación durante la visita papal. A 29-09-2026 no consta resultado de la reunión vaticana de septiembre (sin verificar).", "source": "https://www.religiondigital.org/vaticano/causa-gaudi-avanza-roma-estudio-beatificacion_1_1465253.html" }
+      ]
+    },
+    {
+      "id": "turismo",
+      "title": "Turismo y demanda",
+      "items": [
+        { "text": "Barcelona recibió 16 millones de visitantes en 2025 (26,1 millones con su área). España batió récord con 96,8 millones de turistas extranjeros.", "source": "https://ajuntament.barcelona.cat/turisme/en/latest-news/news/barcelona-welcomes-16-million-visitors-in-2025-a-29-increase-on-the-previous-year-1597951" },
+        { "text": "Desde la inauguración de junio el templo llena su aforo diario y crecen los visitantes españoles; las entradas se agotan con 2-4 semanas de antelación en temporada (sin verificar).", "source": "https://www.telecinco.es/noticias/catalunya/20260923/sagrada-familia-podria-acabada-visitantes_18_020234160.html" },
+        { "text": "Casa Batlló: 1,9 millones de visitantes en 2024. Park Güell: 4,4 millones en 2023, con tope de 4 millones anuales antes de 2027.", "source": "https://www.catalannews.com/society-science/item/barcelona-reducing-park-guell-visitors-2027-22-october-2025" },
+        { "text": "Barcelona es Capital Mundial de la Arquitectura UNESCO-UIA 2026.", "source": "https://www.uia-architectes.org/en/events/world-congresses-of-architects/barcelona-2026/" }
+      ]
+    },
+    {
+      "id": "libros",
+      "title": "Novedades editoriales 2025-2026",
+      "items": [
+        { "text": "En español y catalán hay muchas novedades del centenario de editoriales tradicionales: biografías (Taurus, Arpa, Triangle), cómic (Comanegra, también en inglés), infantiles (Combel, Beascoa, Barcanova) y una novela (Coia Valls).", "source": "https://www.vaticannews.va/es/iglesia/news/2026-06/gaudi-un-libro-y-una-obra-para-el-centenario.html" },
+        { "text": "En inglés apenas hay novedades de editoriales tradicionales: Eaude (Reaktion, 2024), TASCHEN y guías de viaje (Rick Steves 2026, DK Top 10 en octubre de 2026).", "source": "https://reaktionbooks.co.uk/work/antoni-gaud" },
+        { "text": "Proliferan fotolibros autoeditados de poco contenido (40 fotos, sin texto) con ISBN 979-8 y sin valoraciones visibles.", "source": "https://www.amazon.com/Sagrada-Familia-Luxury-Coffee-Landmarks/dp/B0GQPMDFJH" },
+        { "text": "Ningún libro de Gaudí llegó a lo más alto de las listas de Sant Jordi 2026 (según un resumen del buscador).", "source": "https://en.ara.cat/culture/the-definitive-list-of-the-best-selling-books-for-sant-jordi-2026_1_5728752.html" }
+      ]
+    }
+  ],
+  "outdated": [
+    { "text": "La Torre de Jesucristo ya está terminada por fuera (172,5 m) y bendecida. Todo libro que la describa en construcción o dé otra altura está desfasado.", "affects": ["0060935634", "3836560283", "1632867818", "B01FN37I44", "3836566192", "8484788946", "8491031987"], "source": "https://www.vaticannews.va/en/church/news/2026-02/basilica-sagrada-familia-cross-completed-tower-of-jesus-christ.html" },
+    { "text": "Desde el 31-10-2025 es la iglesia más alta del mundo (antes lo era Ulm).", "affects": ["0060935634", "3836560283", "1632867818", "B01FN37I44", "3836566192", "8484788946", "8491031987"], "source": "https://www.guinnessworldrecords.com/world-records/69127-tallest-cathedral-spire" },
+    { "text": "Las ediciones anteriores a diciembre de 2021 no incluyen la torre de la Virgen, y las anteriores a septiembre de 2023 no tienen terminadas las 4 de los evangelistas.", "affects": ["0060935634", "3836560283", "1632867818", "B01FN37I44", "3836566192", "8484788946", "8491031987"], "source": "https://sagradafamilia.org/en/-/inaugurada-la-torre-de-la-mare-de-deu-de-la-sagrada-familia" },
+    { "text": "«Terminada en 2026» es falso para el conjunto: 2026 era la meta de la torre central. Falta la fachada de la Gloria (≈ 2036).", "affects": [], "source": "https://www.ultimahora.es/noticias/comunidades/2026/09/22/2713769/sagrada-familia-muy-avanzadas-negociaciones-barcelona-para-fachada-gloria.html" },
+    { "text": "Gaudí es Venerable desde abril de 2025; los libros antiguos hablan de «siervo de Dios» o de causa pendiente.", "affects": ["0060935634", "3836560283", "1632867818", "B01FN37I44", "3836566192", "8484788946", "8491031987"], "source": "https://www.vaticannews.va/en/vatican-city/news/2025-04/antoni-gaudi-gods-architect-declared-venerable.html" },
+    { "text": "Datos prácticos cambiados: la Sagrada Família ya no vende entradas en taquilla y Park Güell cuesta 18 € desde 2025.", "affects": [], "source": "https://www.ricksteves.com/europe/spain/guidebook-updates" }
+  ]
+}

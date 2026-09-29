@@ -1,0 +1,20 @@
+{
+  "name": "radar-kdp-gaudi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Panel de análisis de nicho KDP (Gaudí / Sagrada Família) a partir de reseñas de Amazon",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-data.mjs",
+    "bookmarklet": "node tools/build-bookmarklet.mjs",
+    "bundle": "node tools/bundle-artifact.mjs",
+    "scrape": "node extractor/scrape.mjs",
+    "test": "node --test tests/"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/
+.perfil-amazon/
+dist/
+*.log
+.DS_Store

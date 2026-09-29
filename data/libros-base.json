@@ -1,0 +1,312 @@
+{
+  "_nota": "Datos de partida obtenidos por búsqueda web el 2026-09-29 (Amazon bloqueado desde el entorno de trabajo). Las cifras marcadas como aproximadas se sustituyen automáticamente por las reales al importar las reseñas extraídas de Amazon.",
+  "consultado": "2026-09-29",
+  "books": [
+    {
+      "asin": "3836566192",
+      "isbn13": "9783836566193",
+      "shortTitle": "The Complete Works (TASCHEN)",
+      "title": "Gaudí",
+      "subtitle": "The Complete Works. 45th Ed.",
+      "authors": [
+        "Rainer Zerbst"
+      ],
+      "publisher": "TASCHEN",
+      "publisherType": "grande",
+      "format": "Tapa dura",
+      "pages": 512,
+      "publicationDate": "2020-07-06",
+      "language": "Inglés",
+      "type": "Obra completa ilustrada",
+      "focus": "Toda la obra de Gaudí",
+      "rating": 4.8,
+      "ratingsTotal": 354,
+      "ratingConfidence": "media",
+      "ratingNote": "4,8 constante en todos los mercados; recuento aproximado (337-397 según el mercado).",
+      "prices": [
+        {
+          "format": "Tapa dura",
+          "amount": 30.0,
+          "currency": "USD",
+          "text": "30,00 US$",
+          "note": "Precio de referencia en librería (Rizzoli); nuevo desde 25,57 US$ en AbeBooks"
+        }
+      ],
+      "bestSellersRank": [
+        {
+          "rank": 89035,
+          "category": "Libros (Amazon.ca)"
+        },
+        {
+          "rank": 14,
+          "category": "Monografías de arquitectura (Amazon.ca)"
+        }
+      ],
+      "goodreads": {
+        "rating": 4.27,
+        "ratings": 687,
+        "note": "Probablemente suma varias ediciones"
+      },
+      "notes": "Primero se vendió como '40th Anniversary Edition'. Hay edición en español (3836566176) con un ranking de ventas muy bajo en Amazon.com.",
+      "sources": [
+        "https://www.amazon.com/Gaud%C3%AD-Complete-Works-40th-Anniversary/dp/3836566192",
+        "https://www.rizzolibookstore.com/product/gaudi-complete-works-45th-ed",
+        "https://www.amazon.ca/Gaud%C3%AD-Complete-Works-40th-Anniversary/dp/3836566192"
+      ]
+    },
+    {
+      "asin": "3836560283",
+      "isbn13": "9783836560283",
+      "shortTitle": "Basic Art (TASCHEN)",
+      "title": "Gaudí",
+      "subtitle": "Basic Art Series 2.0",
+      "authors": [
+        "Maria Antonietta Crippa"
+      ],
+      "publisher": "TASCHEN",
+      "publisherType": "grande",
+      "format": "Tapa dura",
+      "pages": 96,
+      "publicationDate": "2015",
+      "language": "Inglés",
+      "type": "Introducción ilustrada breve",
+      "focus": "Toda la obra de Gaudí (resumen)",
+      "rating": 4.7,
+      "ratingsTotal": 311,
+      "ratingConfidence": "baja",
+      "ratingNote": "Recuento aproximado (297-320 según el mercado).",
+      "prices": [
+        {
+          "format": "Tapa dura",
+          "amount": 20.0,
+          "currency": "USD",
+          "text": "20,00 US$",
+          "note": "PVP; 14,99 US$ en Rizzoli"
+        }
+      ],
+      "bestSellersRank": [],
+      "goodreads": {
+        "rating": 3.69,
+        "ratings": 16
+      },
+      "notes": "Serie de introducción de TASCHEN: unas 120 fotos, bocetos y planos en menos de 100 páginas.",
+      "sources": [
+        "https://www.amazon.com/Gaud%C3%AD-Basic-Maria-Antonietta-Crippa/dp/3836560283",
+        "https://www.taschen.com/en/books/architecture-design/49210/gaudi/",
+        "https://www.rizzolibookstore.com/product/gaudi"
+      ]
+    },
+    {
+      "asin": "1632867818",
+      "isbn13": "9781632867810",
+      "shortTitle": "The Sagrada Familia (van Hensbergen)",
+      "title": "The Sagrada Familia",
+      "subtitle": "The Astonishing Story of Gaudí's Unfinished Masterpiece",
+      "authors": [
+        "Gijs van Hensbergen"
+      ],
+      "publisher": "Bloomsbury USA",
+      "publisherType": "grande",
+      "format": "Tapa dura",
+      "pages": 224,
+      "publicationDate": "2017-07",
+      "language": "Inglés",
+      "type": "Ensayo narrativo sin ilustraciones",
+      "focus": "Historia del templo",
+      "rating": 4.3,
+      "ratingsTotal": 130,
+      "ratingConfidence": "baja",
+      "ratingNote": "Media 4,3 constante; recuento aproximado (125-133). En Goodreads baja a 3,56 (unas 266 valoraciones).",
+      "prices": [
+        {
+          "format": "Tapa dura",
+          "amount": 27.0,
+          "currency": "USD",
+          "text": "27,00 US$",
+          "note": "PVP de lanzamiento (2017)"
+        }
+      ],
+      "bestSellersRank": [
+        {
+          "rank": 18,
+          "category": "Arquitectura de edificios religiosos (dato de mercado dudoso)"
+        }
+      ],
+      "goodreads": {
+        "rating": 3.56,
+        "ratings": 266
+      },
+      "notes": "Amazon.com muestra ahora el subtítulo británico 'Gaudí's Heaven on Earth'. Kindle: B06W5W54NQ.",
+      "sources": [
+        "https://www.amazon.com/Sagrada-Familia-Astonishing-Unfinished-Masterpiece/dp/1632867818",
+        "https://www.tandfonline.com/doi/full/10.1080/03612759.2018.1436334",
+        "https://www.goodreads.com/book/show/31451074-the-sagrada-familia"
+      ]
+    },
+    {
+      "asin": "0060935634",
+      "isbn13": "9780060935634",
+      "shortTitle": "Gaudí: A Biography",
+      "title": "Gaudí",
+      "subtitle": "A Biography",
+      "authors": [
+        "Gijs van Hensbergen"
+      ],
+      "publisher": "Harper Perennial",
+      "publisherType": "grande",
+      "format": "Tapa blanda",
+      "pages": 400,
+      "publicationDate": "2003-11-04",
+      "language": "Inglés",
+      "type": "Biografía",
+      "focus": "Vida de Gaudí",
+      "rating": 4.5,
+      "ratingsTotal": 125,
+      "ratingConfidence": "baja",
+      "ratingNote": "Media 4,5-4,6 y 112-125 valoraciones según el mercado. En Goodreads: 3,50 con 587 valoraciones.",
+      "prices": [],
+      "bestSellersRank": [],
+      "goodreads": {
+        "rating": 3.5,
+        "ratings": 587
+      },
+      "notes": "Amazon.com muestra ahora un subtítulo largo cargado de palabras clave: 'The Icon of Artistic Integrity Whose Controversial Catalan Masterpieces Defined Modern Architecture'.",
+      "sources": [
+        "https://www.amazon.com/Gaudi-Biography-Gijs-van-Hensbergen/dp/0060935634",
+        "https://www.goodreads.com/book/show/749413.Gaudi",
+        "https://www.kirkusreviews.com/book-reviews/gijs-van-hensbergen/gaudi/"
+      ]
+    },
+    {
+      "asin": "8484788946",
+      "isbn13": "9788484788942",
+      "shortTitle": "The Cathedral of Light (Triangle)",
+      "title": "The Sagrada Família",
+      "subtitle": "The Cathedral of light",
+      "authors": [
+        "Chiara Curti",
+        "Pere Vivas (fotografía)"
+      ],
+      "publisher": "Triangle Books",
+      "publisherType": "especializada",
+      "format": "Tapa blanda",
+      "pages": 216,
+      "publicationDate": "2022-12-13",
+      "language": "Inglés",
+      "type": "Fotolibro con texto de experta",
+      "focus": "Sagrada Família: luz y simbolismo",
+      "rating": null,
+      "ratingsTotal": null,
+      "ratingConfidence": null,
+      "ratingNote": "Dato de Amazon.com no visible. Otros mercados: Reino Unido 4,5 (14), Canadá 4,6 (10), Australia 5,0 (8).",
+      "ratingProxy": {
+        "rating": 4.5,
+        "ratingsTotal": 14,
+        "market": "Amazon.co.uk"
+      },
+      "prices": [],
+      "priceNote": "Amazon.co.uk: 28,00 £",
+      "bestSellersRank": [],
+      "notes": "Ediciones en español (8484788938), catalán, alemán e italiano. Se vende en la tienda oficial de la basílica.",
+      "sources": [
+        "https://www.amazon.com/Sagrada-Fam%C3%ADlia-Cathedral-light/dp/8484788946",
+        "https://triangle.cat/en/producto/the-sagrada-familia/",
+        "https://www.amazon.co.uk/Sagrada-Familia-Cathedral-Light/dp/8484788946"
+      ]
+    },
+    {
+      "asin": "8491031987",
+      "isbn13": "9788491031987",
+      "shortTitle": "Deluxe Edition (Dosde)",
+      "title": "The Basilica of the Sagrada Familia",
+      "subtitle": "Architecture, history and art. Deluxe Edition",
+      "authors": [
+        "Dosde"
+      ],
+      "publisher": "Dosde",
+      "publisherType": "especializada",
+      "format": "Tapa dura",
+      "pages": 232,
+      "publicationDate": "2022",
+      "language": "Inglés",
+      "type": "Libro visual con ilustraciones 3D",
+      "focus": "Sagrada Família: arquitectura, historia y arte",
+      "rating": null,
+      "ratingsTotal": null,
+      "ratingConfidence": null,
+      "ratingNote": "Dato de Amazon.com no visible. Reino Unido: 4,8 (18).",
+      "ratingProxy": {
+        "rating": 4.8,
+        "ratingsTotal": 18,
+        "market": "Amazon.co.uk"
+      },
+      "prices": [],
+      "bestSellersRank": [],
+      "notes": "En Amazon.com el título aparece como 'ED. LUJO - SAGRADA FAMILIA - (INGLÉS)': una ficha pobre para las búsquedas. Más de 250 fotos e ilustraciones 3D. Autoría atribuida en Amazon a Cerys Jones.",
+      "sources": [
+        "https://www.amazon.com/ED-LUJO-SAGRADA-FAMILIA-INGL%C3%89S/dp/8491031987",
+        "https://www.dosde.com/en/sagrada-familia-important-work-deluxe.html",
+        "https://www.amazon.co.uk/Basilica-Architecture-Hardcover-illustrations-978-84-9103-198-7/dp/8491031987"
+      ]
+    },
+    {
+      "asin": "B01FN37I44",
+      "isbn13": null,
+      "shortTitle": "El paraíso terrenal de Gaudí (Kindle)",
+      "title": "La Sagrada Familia",
+      "subtitle": "El paraíso terrenal de Gaudí",
+      "authors": [
+        "Gijs van Hensbergen",
+        "Jofre Homedes Beutnagel (traducción)"
+      ],
+      "publisher": "Plaza & Janés",
+      "publisherType": "grande",
+      "format": "Kindle",
+      "pages": 234,
+      "publicationDate": "2016-06-09",
+      "language": "Español",
+      "type": "Ensayo narrativo (traducción)",
+      "focus": "Historia del templo",
+      "rating": null,
+      "ratingsTotal": null,
+      "ratingConfidence": null,
+      "ratingNote": "Sin dato fiable. La tapa dura (8401347130) muestra 4,8 con 155 valoraciones en Amazon.co.jp, cifra poco fiable.",
+      "prices": [],
+      "bestSellersRank": [],
+      "notes": "Versión española del libro de van Hensbergen sobre el templo; hay reedición de bolsillo en Debolsillo (8466339728) y versión catalana.",
+      "sources": [
+        "https://www.amazon.com.mx/Sagrada-Familia-para%C3%ADso-terrenal-Gaud%C3%AD-ebook/dp/B01FN37I44",
+        "https://www.elespanol.com/el-cultural/letras/20160610/sagrada-familia-paraiso-terrenal-gaudi/131487665_0.html"
+      ]
+    },
+    {
+      "asin": "B0GF2QG1T9",
+      "isbn13": null,
+      "shortTitle": "Inside the Sagrada Família (Pandya)",
+      "title": "Inside the Sagrada Família",
+      "subtitle": "Light, Geometry, and the Inner Cosmos of Gaudí's Sacred Architecture",
+      "authors": [
+        "Pranav Pandya"
+      ],
+      "publisher": "Autoedición (KDP)",
+      "publisherType": "independiente",
+      "format": "Kindle",
+      "pages": 76,
+      "publicationDate": "2026-01-05",
+      "language": "Inglés",
+      "type": "Ensayo breve contemplativo",
+      "focus": "Sagrada Família: luz y geometría",
+      "rating": null,
+      "ratingsTotal": null,
+      "ratingConfidence": null,
+      "ratingNote": "Sin valoraciones visibles en ninguna fuente.",
+      "prices": [],
+      "bestSellersRank": [],
+      "notes": "También en tapa blanda (B0GF6TMG2H, ISBN 979-8, típico de KDP). El mismo autor sacó después 'SAGRADA FAMÍLIA The Cathedral of Light: Gaudí's Vision Finally Completed', con un título casi idéntico al de Triangle.",
+      "sources": [
+        "https://us.amazon.com/INSIDE-SAGRADA-FAM%C3%8DLIA-Geometry-Architecture-ebook/dp/B0GF2QG1T9",
+        "https://us.amazon.com/INSIDE-SAGRADA-FAM%C3%8DLIA-Geometry-Architecture/dp/B0GF6TMG2H"
+      ]
+    }
+  ]
+}
