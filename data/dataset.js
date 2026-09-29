@@ -1,7 +1,7 @@
 /* Archivo generado por tools/build-data.mjs. No lo edites a mano: cambia los JSON de data/ y ejecuta npm run build. */
 window.KDP_DATASET = {
  "schema": "kdp-dataset/1",
- "generatedAt": "2026-09-29T11:44:24.080Z",
+ "generatedAt": "2026-09-29T11:56:01.482Z",
  "consultado": "2026-09-29",
  "links": {
   "total": 15,

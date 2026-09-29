@@ -19,6 +19,7 @@
     return AMAZON + '/-/es/portal/customer-reviews/' + b.asin + '/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews';
   }
   function isApprox(b) { return b.metaSource !== 'amazon'; }
+  function hasRealCover(b) { return !!(b.coverData && /^data:image\//.test(b.coverData)); }
   function pct(v, d) { return v == null ? '—' : U.fmtNum(v, d == null ? (Math.round(v) === v ? 0 : 1) : d) + ' %'; }
   function mainPrice(b) {
     var list = b.prices || [];
@@ -412,6 +413,13 @@
       list.forEach(function (b) { grid.appendChild(bookCard(ctx, b)); });
     }
     sortSel.addEventListener('change', draw);
+    var noCover = ctx.books.filter(function (b) { return !hasRealCover(b); }).length;
+    if (noCover) {
+      main.appendChild(h('div', { class: 'callout' },
+        h('strong', null, noCover === ctx.books.length ? 'Todavía no hay portadas reales.' : noCover + ' de ' + ctx.books.length + ' libros muestran una portada provisional.'),
+        h('span', null, 'El panel publicado no puede cargar imágenes de Amazon. La portada real se guarda al importar las reseñas de cada libro: el extractor incrusta una miniatura. ',
+          h('a', { href: '#importar' }, 'Cómo importarlas →'))));
+    }
     main.appendChild(h('div', { class: 'filters' }, h('div', { class: 'field' }, h('label', { for: 'sort-books' }, 'Ordenar por'), sortSel)));
     main.appendChild(grid);
     draw();
@@ -1063,7 +1071,7 @@
 
   V.importer = function (ctx, main, app) {
     var S = root.KDPStore;
-    main.appendChild(U.pageHead('Datos', 'Importar reseñas', 'Extrae las reseñas en tu navegador (con tu sesión de Amazon) y súbelas aquí. El panel se recalcula solo.'));
+    main.appendChild(U.pageHead('Datos', 'Importar reseñas', 'Copia el extractor, ejecútalo en la página de reseñas de cada libro y arrastra aquí los archivos que se descargan. El panel se recalcula solo y guarda también la portada de cada libro.'));
     var backendText = {
       artefacto: 'Se guardan en este panel publicado: las verás en cualquier dispositivo y Claude podrá leerlas para afinar el análisis.',
       navegador: 'Se guardan en este navegador (IndexedDB). Para compartirlas, guarda los archivos en data/raw/ del repositorio y ejecuta npm run build.',
@@ -1072,41 +1080,46 @@
     main.appendChild(h('div', { class: 'callout' }, h('strong', null, 'Almacenamiento: '), h('span', { id: 'backend-text' }, S.backend ? backendText[S.backend] : 'comprobando…')));
 
     var X = root.KDP_EXTRACTOR;
+    var copySrc = null;
     if (X && X.source) {
-      var copySrc = h('button', { class: 'btn primary', type: 'button' }, 'Copiar el código del extractor');
+      copySrc = h('button', { class: 'btn primary', type: 'button' }, 'Copiar el código del extractor');
       copySrc.addEventListener('click', function () { U.copyText(X.source, 'Código copiado: pégalo en la consola de Amazon'); });
-      var tools = [copySrc];
-      if (X.bookmarklet) {
-        var bm = h('a', { class: 'btn', href: X.bookmarklet, title: 'Arrástralo a tu barra de marcadores' }, 'Extraer reseñas KDP');
-        bm.addEventListener('click', function (e) { e.preventDefault(); U.toast('Arrástralo a la barra de marcadores; se usa en Amazon'); });
-        var copyBm = h('button', { class: 'btn', type: 'button' }, 'Copiar el marcador');
-        copyBm.addEventListener('click', function () { U.copyText(X.bookmarklet, 'Marcador copiado'); });
-        tools.push(bm, copyBm);
-      }
-      main.appendChild(h('div', { class: 'callout' },
-        h('strong', null, 'Extractor listo' + (X.version ? ' (versión ' + X.version + ')' : '') + '.'),
-        h('span', null, 'Arrastra «Extraer reseñas KDP» a tu barra de marcadores, o copia el código y pégalo en la consola (F12) de la página de reseñas de Amazon.'),
-        h('div', { class: 'row' }, tools)));
     }
-    main.appendChild(U.section('1. Extrae las reseñas de cada libro', 'Hay tres formas; la más sencilla es el marcador.', h('div', { class: 'grid grid-3' },
-      h('section', { class: 'card' }, h('h3', null, 'Con el marcador (recomendado)'),
+    main.appendChild(U.section('Paso 1 · Extrae las reseñas de cada libro',
+      'Hazlo libro a libro. Cada vez se descarga un archivo en tu carpeta Descargas; no hace falta abrirlo.', h('div', { class: 'card' },
         h('ol', { class: 'steps' },
-          h('li', null, root.KDP_EXTRACTOR && root.KDP_EXTRACTOR.bookmarklet
-            ? 'Arrastra el botón «Extraer reseñas KDP» de arriba a tu barra de marcadores (o usa extractor/instalar-marcador.html del repositorio).'
-            : 'Abre extractor/instalar-marcador.html del repositorio y arrastra el botón a tu barra de marcadores.'),
-          h('li', null, 'Abre en Amazon la página de reseñas de un libro (enlaces abajo), con tu sesión iniciada.'),
-          h('li', null, 'Pulsa el marcador: hace clic en «Ver más reseñas» y en «Mostrar 10 opiniones más» hasta el final.'),
-          h('li', null, 'Al terminar descarga resenas-ASIN.json. Repite con cada libro.'))),
-      h('section', { class: 'card' }, h('h3', null, 'Pegándolo en la consola'),
-        h('ol', { class: 'steps' },
-          h('li', null, 'En la página de reseñas pulsa F12 y abre la pestaña Consola.'),
-          h('li', null, 'Pega el contenido de extractor/extractor.js y pulsa Intro (Chrome pide escribir «allow pasting» la primera vez).'),
-          h('li', null, 'Descarga el JSON cuando termine.'))),
-      h('section', { class: 'card' }, h('h3', null, 'Automático con Playwright'),
-        h('ol', { class: 'steps' },
-          h('li', null, h('code', null, 'npm install'), ' y ', h('code', null, 'npx playwright install chromium')),
-          h('li', null, h('code', null, 'npm run scrape'), ': abre un navegador, inicias sesión una vez y recorre los 8 libros.'),
-          h('li', null, 'Guarda los archivos en data/raw/; después ', h('code', null, 'npm run build'), '.'))))));
+          h('li', null, 'Copia el extractor: ', copySrc || h('code', null, 'extractor/extractor.js')),
+          h('li', null, 'En la tabla de abajo, pulsa «Abrir ↗» en un libro. Hace falta Chrome en un ordenador y tu sesión de Amazon iniciada.'),
+          h('li', null, 'En esa página pulsa F12, abre la pestaña «Console» y haz clic en la línea de abajo (›). La primera vez escribe ', h('code', null, 'allow pasting'), ' y pulsa Intro.'),
+          h('li', null, 'Pega con Ctrl+V y pulsa Intro. Aparece un recuadro abajo a la derecha: espera a que termine y descargue el archivo.'),
+          h('li', null, 'Repite con el siguiente libro.')))));
+    var booksHolder = h('div'), dropHolder = h('div'), otherHolder = h('div');
+    main.appendChild(booksHolder);
+    main.appendChild(dropHolder);
+    main.appendChild(otherHolder);
+
+    // otras formas de extraer (opcionales)
+    var bmTools = null;
+    if (X && X.bookmarklet) {
+      var bm = h('a', { class: 'btn', href: X.bookmarklet, title: 'Arrástralo a tu barra de marcadores' }, 'Extraer reseñas KDP');
+      bm.addEventListener('click', function (e) { e.preventDefault(); U.toast('Arrástralo a la barra de marcadores; se usa en Amazon'); });
+      var copyBm = h('button', { class: 'btn', type: 'button' }, 'Copiar el marcador');
+      copyBm.addEventListener('click', function () { U.copyText(X.bookmarklet, 'Marcador copiado'); });
+      bmTools = h('div', { class: 'row' }, bm, copyBm);
+    }
+    otherHolder.appendChild(h('details', { class: 'card' },
+      h('summary', { style: { cursor: 'pointer', fontWeight: '650' } }, 'Otras formas de extraer (más rápidas si tienes muchos libros)'),
+      h('div', { class: 'grid grid-2', style: { marginTop: '12px' } },
+        h('section', { class: 'stack' }, h('h3', null, 'Marcador de un clic'), bmTools,
+          h('ol', { class: 'steps' },
+            h('li', null, 'Muestra la barra de marcadores (Ctrl+Mayús+B) y arrastra «Extraer reseñas KDP» hasta ella.'),
+            h('li', null, 'Abre la página de reseñas de un libro y pulsa el marcador.'),
+            h('li', null, 'Si al arrastrarlo no se guarda, pulsa «Copiar el marcador» y créalo a mano pegando esa dirección.'))),
+        h('section', { class: 'stack' }, h('h3', null, 'Automático con Playwright'),
+          h('ol', { class: 'steps' },
+            h('li', null, h('code', null, 'npm install'), ' y ', h('code', null, 'npx playwright install chromium')),
+            h('li', null, h('code', null, 'npm run scrape'), ': abre un navegador, inicias sesión una vez y recorre los 8 libros.'),
+            h('li', null, 'Guarda los archivos en data/raw/; después ', h('code', null, 'npm run build'), '.'))))));
 
     // zona de carga
     var log = h('div', { class: 'log', 'aria-live': 'polite' });
@@ -1120,11 +1133,11 @@
     if (Date.now() - importLog.at < 10 * 60 * 1000) importLog.lines.forEach(function (l) { log.appendChild(h('p', { class: l.cls }, l.text)); });
     var input = h('input', { type: 'file', id: 'import-file', accept: '.json,application/json', multiple: true, class: 'visually-hidden' });
     var drop = h('div', { class: 'drop' },
-      h('strong', null, 'Arrastra aquí los archivos resenas-*.json'),
+      h('strong', null, 'Arrastra aquí los archivos resenas-….json'),
       h('span', { class: 'small ink-2' }, 'o'),
       h('label', { class: 'btn primary', for: 'import-file' }, 'Elegir archivos'),
       input,
-      h('span', { class: 'small muted' }, 'También puedes pegar el JSON copiado con «Copiar JSON» (Ctrl+V en esta página).'));
+      h('span', { class: 'small muted' }, 'Puedes soltar varios a la vez: en la carpeta Descargas, selecciónalos con Ctrl+clic. También vale pegar el texto copiado con «Copiar JSON» (Ctrl+V en esta página).'));
     function handleTexts(items) {
       var imports = [];
       items.forEach(function (it) {
@@ -1167,11 +1180,11 @@
     };
     document.addEventListener('paste', onPaste);
     app.onLeave(function () { document.removeEventListener('paste', onPaste); });
-    main.appendChild(U.section('2. Súbelos al panel', null, [drop, log]));
+    dropHolder.appendChild(U.section('Paso 2 · Sube los archivos', 'Al terminar cada libro, o todos juntos al final. El panel se actualiza en el momento.', [drop, log]));
 
     // estado por libro
-    main.appendChild(U.section('3. Estado por libro', null, h('div', { class: 'table-wrap' }, h('table', null,
-      h('thead', null, h('tr', null, h('th', null, 'Libro'), h('th', null, 'Reseñas en Amazon'), h('th', { class: 'n' }, 'Importadas'), h('th', null, 'Fecha'), h('th', null, '¿Completo?'), h('th', null, ''))),
+    booksHolder.appendChild(U.section('Tus libros', 'Abre cada uno, extrae sus reseñas y aquí verás cuántas se han importado y si ya tiene su portada.', h('div', { class: 'table-wrap' }, h('table', null,
+      h('thead', null, h('tr', null, h('th', null, 'Libro'), h('th', null, 'Reseñas en Amazon'), h('th', { class: 'n' }, 'Importadas'), h('th', null, 'Portada'), h('th', null, 'Fecha'), h('th', null, '¿Completo?'), h('th', null, ''))),
       h('tbody', null, ctx.books.map(function (b) {
         var imp = (S.imports || []).filter(function (x) { return x.asin === b.asin; })[0];
         var repoCount = (ctx.DS.reviews[b.asin] || []).length;
@@ -1191,7 +1204,8 @@
         return h('tr', null,
           h('td', null, h('a', { href: '#resenas-' + b.asin }, shortTitle(b))),
           h('td', null, U.extLink(reviewsUrl(ctx, b), 'Abrir ↗')),
-          h('td', { class: 'n' }, U.fmtNum((imp ? (imp.count || imp.reviews.length) : 0) + repoCount)),
+          h('td', { class: 'n' }, U.fmtNum((ctx.reviews[b.asin] || []).length)),
+          h('td', null, hasRealCover(b) ? U.status('good', 'sí') : U.status('none', 'pendiente')),
           h('td', null, imp ? U.fmtDate((imp.exportedAt || imp.importedAt || '').slice(0, 10)) : repoCount ? 'en el repositorio' : '—'),
           h('td', null, imp ? (imp.complete ? U.status('good', 'sí') : U.status('warn', 'parcial')) : '—'),
           cell);

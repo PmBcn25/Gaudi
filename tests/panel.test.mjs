@@ -96,7 +96,9 @@ test('importar en el navegador: recalcula, no duplica, persiste y se puede borra
   assert.match(await page.locator('.tabs').innerText(), /Todas\s*40/);
   await page.goto(`${base}/index.html#inicio`);
   await page.waitForSelector('.verdict');
-  assert.match(await page.locator('.kpis').first().innerText(), /40/);
+  // reseñas reales ya guardadas en el repositorio (data/raw) + las 40 de la prueba
+  const enRepositorio = await page.evaluate(() => Object.values(window.KDP_DATASET.reviews).reduce((n, l) => n + l.length, 0));
+  assert.match(await page.locator('.kpis').first().innerText(), new RegExp(`Reseñas importadas\\s*${enRepositorio + 40}`));
   await page.goto(`${base}/index.html#importar`);
   await page.getByRole('button', { name: 'Borrar' }).click();
   await page.getByRole('button', { name: 'Sí, borrar' }).click();

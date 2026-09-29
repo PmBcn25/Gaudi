@@ -87,13 +87,15 @@
   function cover(book, size) {
     var box = h('div', { class: 'cover' + (size === 'lg' ? ' lg' : ''), role: 'img', 'aria-label': 'Portada de ' + (book.title || book.asin) });
     box.appendChild(generatedCover(book));
+    var pending = !(book.coverData && /^data:image\//.test(book.coverData));
+    if (pending) box.title = 'Portada provisional: la real se guarda al importar las reseñas de este libro';
     // coverData: miniatura incrustada por el extractor (sirve también en claude.ai, donde no cargan imágenes externas).
     var url = book.coverData && /^data:image\//.test(book.coverData) ? book.coverData : root.KDP_OFFLINE_COVERS ? null : coverUrl(book);
     if (url) {
       var img = h('img', { alt: '', loading: 'lazy', referrerpolicy: 'no-referrer' });
       img.addEventListener('load', function () {
         // Amazon devuelve un gif de 1×1 cuando no tiene la imagen.
-        if (img.naturalWidth < 20) img.remove();
+        if (img.naturalWidth < 20) img.remove(); else box.removeAttribute('title');
       });
       img.addEventListener('error', function () { img.remove(); });
       img.src = url;
