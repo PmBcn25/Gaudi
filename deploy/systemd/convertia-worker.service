@@ -1,0 +1,47 @@
+# Convertia: worker de conversión. Abre archivos de desconocidos, así que va encerrado:
+# usuario propio, sin red (PrivateNetwork), sistema de solo lectura, escribe solo en
+# /var/conversor y no ve el resto de proyectos de la máquina.
+[Unit]
+Description=Convertia - worker de conversion (sin red)
+After=convertia-web.service
+
+[Service]
+Type=simple
+User=convertia
+Group=convertia
+EnvironmentFile=/etc/convertia.env
+WorkingDirectory=/var/conversor/app
+ExecStart=/var/conversor/node/bin/node src/worker.js
+Restart=always
+RestartSec=2
+UMask=0007
+KillMode=control-group
+TimeoutStopSec=15
+# Aislamiento
+PrivateNetwork=yes
+RestrictAddressFamilies=AF_UNIX
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+TemporaryFileSystem=/var:ro /srv:ro /opt:ro /mnt:ro /media:ro
+BindReadOnlyPaths=/var/conversor/app /var/conversor/node
+BindReadOnlyPaths=-/var/cache/fontconfig
+BindPaths=/var/conversor/tmp /var/conversor/db /var/conversor/run /var/conversor/home
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+MemoryMax=6G
+TasksMax=512
+
+[Install]
+WantedBy=multi-user.target

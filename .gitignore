@@ -1,0 +1,8 @@
+node_modules/
+secret/
+deploy/vps.env
+tests/out/
+tests/fixtures/
+*.log
+.DS_Store
+deploy/last-deploy.env

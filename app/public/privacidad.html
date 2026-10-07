@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Privacidad · Convertia</title>
+<meta name="description" content="Política de privacidad de Convertia: qué pasa con tus archivos. Sin cookies.">
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"><symbol id="i-logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" class="lg-b"/><path class="lg-a" d="M9 13h12l-3.5-3.5M23 19H11l3.5 3.5"/></symbol></svg>
+<header class="top">
+ <div class="wrap top-in">
+  <a class="brand" href="./" aria-label="Convertia, inicio"><svg class="logo"><use href="#i-logo"/></svg>Convertia</a>
+  <nav class="nav" aria-label="Secciones"><a href="./#como">Cómo funciona</a><a href="./#formatos">Formatos</a><a href="./#precios">Precios</a><a href="./#faq">Preguntas</a></nav>
+  <div class="acts"><a class="link login" href="acceso.html#entrar">Iniciar sesión</a><a class="btn btn-s" href="acceso.html#crear">Crear cuenta</a></div>
+ </div>
+</header>
+<main class="page">
+ <div class="wrap">
+  <p class="mock" role="note"><b>Texto provisional.</b> La parte técnica (qué pasa con tus archivos) describe cómo funciona hoy el servicio. La parte legal está marcada como <span class="pend">[Pendiente]</span>.</p>
+  <h1>Privacidad</h1>
+  <p>Última actualización: octubre de 2026.</p>
+  <h2>Qué pasa con tus archivos</h2>
+  <ul>
+   <li>Se suben por HTTPS y se procesan en este mismo servidor. No se envían a ningún otro servicio.</li>
+   <li>Cada archivo se guarda en una carpeta con un identificador aleatorio de 192 bits, imposible de adivinar. Solo quien tiene ese identificador (tu navegador) puede descargar el resultado.</li>
+   <li>Todo se borra automáticamente a los 30 minutos: una tarea revisa cada 10 minutos y elimina lo que haya superado ese tiempo. El enlace de descarga caduca con el archivo. Si quitas una tarjeta, el archivo se borra en ese momento.</li>
+   <li>La conversión la hace un proceso aislado, sin acceso a internet y sin acceso al resto del servidor.</li>
+   <li>Nadie mira tus archivos y no se usan para nada más que la conversión que pides.</li>
+  </ul>
+  <h2>Qué datos guardamos</h2>
+  <ul>
+   <li>No hay cuentas, ni historial, ni correo, ni contraseñas.</li>
+   <li>Para evitar abusos contamos cuántas conversiones se hacen por hora desde cada dirección IP. Ese recuento vive solo en la memoria del servidor (nunca en disco), se guarda cifrado con una clave que cambia en cada reinicio y no se relaciona con ningún archivo.</li>
+   <li>No guardamos registros que relacionen una IP con un archivo: ni en la base de datos, ni en los registros de la aplicación, ni en los del servidor web para estas rutas.</li>
+  </ul>
+  <h2 id="cookies">Cookies</h2>
+  <p>No usamos cookies. Ni propias, ni de terceros. Tampoco analítica, píxeles de seguimiento ni recursos de otros dominios: la página, la tipografía y los iconos se sirven desde este servidor.</p>
+  <h2>Responsable del tratamiento</h2>
+  <p><span class="pend">[Pendiente]</span> Identidad y datos de contacto del responsable.</p>
+  <h2>Base legal y derechos</h2>
+  <p><span class="pend">[Pendiente]</span> Base jurídica del tratamiento y cómo ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad.</p>
+  <h2>Cambios en esta política</h2>
+  <p><span class="pend">[Pendiente]</span></p>
+ </div>
+</main>
+<footer class="foot">
+ <div class="wrap foot-in">
+  <div class="fb"><a class="brand" href="./"><svg class="logo"><use href="#i-logo"/></svg>Convertia</a><p>Conversor de archivos gratis, sin registro y sin anuncios.</p></div>
+  <div><h4>Producto</h4><a href="./#herramienta">Conversor</a><a href="./#formatos">Formatos</a><a href="./#precios">Precios</a><a href="./#faq">Preguntas</a></div>
+  <div><h4>Cuenta</h4><a href="acceso.html#entrar">Iniciar sesión</a><a href="acceso.html#crear">Crear cuenta</a></div>
+  <div><h4>Legal</h4><a href="terminos.html">Términos de uso</a><a href="privacidad.html">Privacidad</a><a href="privacidad.html#cookies">Cookies: no usamos</a></div>
+ </div>
+ <p class="wrap copy">© 2026 Convertia · Hecho con FFmpeg, libvips, LibreOffice, Pandoc, Ghostscript y qpdf.</p>
+</footer>
+</body>
+</html>

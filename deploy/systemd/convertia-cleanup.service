@@ -1,0 +1,21 @@
+# Convertia: borra todo lo que supere los 30 minutos.
+[Unit]
+Description=Convertia - limpieza de archivos caducados
+
+[Service]
+Type=oneshot
+User=convertia
+Group=convertia
+EnvironmentFile=/etc/convertia.env
+WorkingDirectory=/var/conversor/app
+ExecStart=/var/conversor/node/bin/node src/cleanup.js
+PrivateNetwork=yes
+RestrictAddressFamilies=AF_UNIX
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+TemporaryFileSystem=/var:ro /srv:ro /opt:ro /mnt:ro /media:ro
+BindReadOnlyPaths=/var/conversor/app /var/conversor/node
+BindPaths=/var/conversor/tmp /var/conversor/db

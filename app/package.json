@@ -1,0 +1,21 @@
+{
+  "name": "convertia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Convertia: conversor de archivos sin registro",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "web": "node src/server.js",
+    "worker": "node src/worker.js",
+    "cleanup": "node src/cleanup.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^4.22.3",
+    "sharp": "^0.33.5"
+  }
+}
