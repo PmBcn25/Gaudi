@@ -320,7 +320,7 @@ api.post('/jobs/:id/cancel', (req, res) => {
 
 function gone(req, res, msg) {
   if (String(req.headers.accept || '').includes('text/html')) {
-    res.status(410).type('html').send(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Enlace caducado</title><body style="font:16px system-ui;padding:40px;max-width:560px;margin:auto"><h1>Este enlace ha caducado</h1><p>${msg}</p><p><a href="../../../">Volver a Convertia</a></p>`);
+    res.status(410).type('html').send(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Enlace caducado</title><h1>Este enlace ha caducado</h1><p>${msg}</p><p><a href="../../../">Volver a Convertia</a></p>`);
   } else fail(res, 410, msg);
 }
 
@@ -359,7 +359,7 @@ api.use((req, res) => fail(res, 404, 'No existe.'));
 app.use('/api', api);
 
 app.use((req, res) => {
-  res.status(404).type('html').send('<!doctype html><meta charset="utf-8"><title>No encontrado</title><p style="font:16px system-ui;padding:40px">Esta página no existe. <a href="./">Ir a Convertia</a>');
+  res.status(404).type('html').send('<!doctype html><meta charset="utf-8"><title>No encontrado</title><p>Esta página no existe. <a href="./">Ir a Convertia</a>');
 });
 // Errores inesperados: mensaje claro, nunca un volcado técnico.
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

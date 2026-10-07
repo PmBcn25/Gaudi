@@ -38,6 +38,16 @@ for (const [name, opts] of [
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('request', (r) => { const u = new URL(r.url()); if (!['blob:', 'data:'].includes(u.protocol) && u.host !== host) foreign.push(r.url()); });
   await page.goto(BASE, { waitUntil: 'load' });
+  // Teclado: Enter con el foco en el dropeador abre el selector del sistema. (Playwright activa
+  // la interceptación del selector de forma asíncrona: se le da un momento antes de pulsar.)
+  if (!opts.hasTouch) {
+    await page.focus('#drop');
+    const kc = page.waitForEvent('filechooser', { timeout: 5000 });
+    await page.waitForTimeout(250);
+    await page.keyboard.press('Enter');
+    check(!!(await kc.catch(() => null)), 'Enter con el foco en el dropeador abre el selector');
+    await page.waitForTimeout(300);
+  }
   const slug = name.startsWith('m') ? 'movil' : 'escritorio';
   await page.screenshot({ path: path.join(OUTDIR, `web-${slug}-inicio.png`) });
   const dropText = await page.textContent('.drop-main');
@@ -50,21 +60,13 @@ for (const [name, opts] of [
   let o = await overflow(page);
   check(o.scroll <= o.width && !o.bad.length, 'sin desbordes horizontales (página entera)', `${o.scroll}px de ${o.width}px ${o.bad.join(' ')}`);
 
-  // Pulsar el dropeador abre el selector del sistema (ratón/dedo y teclado).
-  let chooser = page.waitForEvent('filechooser', { timeout: 5000 });
+  let chooser;
+  // Ratón o dedo: pulsar el dropeador también lo abre.
+  chooser = page.waitForEvent('filechooser', { timeout: 5000 });
   if (opts.hasTouch) await page.tap('#drop'); else await page.click('#drop');
   const fc = await chooser.catch(() => null);
   check(!!fc, opts.hasTouch ? 'tocar el dropeador abre el selector' : 'clic en el dropeador abre el selector');
   if (fc) await fc.setFiles([path.join(FIX, 'photo.jpg')]);
-  // Deja que el navegador cierre del todo el primer selector antes de abrir otro.
-  await page.waitForSelector('.card', { timeout: 10000 }).catch(() => {});
-  await page.waitForTimeout(600);
-  if (!opts.hasTouch) {
-    await page.focus('#drop');
-    chooser = page.waitForEvent('filechooser', { timeout: 5000 });
-    await page.keyboard.press('Enter');
-    check(!!(await chooser.catch(() => null)), 'Enter con el foco en el dropeador abre el selector');
-  }
 
   // Arrastrar un archivo a CUALQUIER parte de la ventana: velo y borde animado; soltar añade la tarjeta.
   const dt = await page.evaluateHandle(async () => {

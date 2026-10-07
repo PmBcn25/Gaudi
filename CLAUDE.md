@@ -79,6 +79,10 @@ Qué hace (idempotente, sin pisar nada ajeno):
   `X-Accel-Buffering: no`, gzip, subidas de 200 MB en streaming, **sin access_log**.
 - Certificado (ver «Dominio») y cortafuegos: abre 80 y 443 (ufw/firewalld/iptables) y deja el resto igual.
 - Resultado en `/var/conversor/deploy-info.env` (y una copia local en `deploy/last-deploy.env`).
+- Si quedó en autofirmado, basta con volver a lanzar `deploy/deploy.sh`: reintenta Let's Encrypt.
+
+Variables solo para entornos de prueba: `PUBLIC_IP` (forzar la IP), `CERT_MODE=selfsigned` (no pedir
+certificado), `CERTBOT_STAGING=1` (usar el entorno de pruebas de Let's Encrypt).
 
 ## Probar
 
