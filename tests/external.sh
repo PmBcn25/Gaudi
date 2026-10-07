@@ -15,7 +15,19 @@ echo "Acceso externo a $URL ($HOST → $IP)"
 CA=()
 [ -n "${CACERT:-}" ] && CA=(--cacert "$CACERT")
 out="$(curl -sS "${CA[@]}" -o /dev/null -w '%{http_code} %{ssl_verify_result}' "$URL" 2>&1)"
-if [[ "$out" == "200 0" ]]; then ok "HTTPS responde 200 con certificado verificado${CACERT:+ (contra $CACERT)}"; else ko "HTTPS con verificación: $out"; fi
+MODE="$("$ROOT/scripts/vps.sh" 'cat /var/conversor/deploy-info.env' 2>/dev/null | grep -oE '^CERT_MODE="[^"]*"' | cut -d'"' -f2)"
+if [[ "$out" == "200 0" ]]; then
+  ok "HTTPS responde 200 con certificado verificado${CACERT:+ (contra $CACERT)}"
+elif [ "$MODE" = autofirmado ]; then
+  # El despliegue cayó al plan C (autofirmado) y lo avisó: se verifica contra el certificado fijado.
+  PIN="$(mktemp)"; "$ROOT/scripts/vps.sh" "cat /etc/ssl/convertia/$HOST.crt" > "$PIN" 2>/dev/null
+  out2="$(curl -sS --cacert "$PIN" -o /dev/null -w '%{http_code} %{ssl_verify_result}' "$URL" 2>&1)"
+  echo "  ⚠ certificado AUTOFIRMADO (las CA públicas no lo validan; ver CERT_REASON en deploy-info.env)"
+  if [[ "$out2" == "200 0" ]]; then ok "HTTPS responde 200 y el certificado verifica contra el fijado del servidor"; else ko "HTTPS ni siquiera con el certificado fijado: $out2"; fi
+  rm -f "$PIN"
+else
+  ko "HTTPS con verificación: $out"
+fi
 cert="$(echo | openssl s_client -connect "$IP:443" -servername "$HOST" 2>/dev/null | openssl x509 -noout -issuer -subject -enddate 2>/dev/null | tr '\n' ' ')"
 echo "    certificado: $cert"
 code="$(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "http://$HOST/" 2>&1)"

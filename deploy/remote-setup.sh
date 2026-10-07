@@ -237,8 +237,13 @@ if [ -n "$PREFIX" ]; then
       /listen[^;]*443/ { seen443=1 } { print }' "$CONF" > "$CONF.convertia.tmp" && mv "$CONF.convertia.tmp" "$CONF"
   fi
   reload_nginx
-  CERT_MODE_FINAL="existente"; CERT_REASON="se usa el certificado que ya tiene $DOMAIN"
-  URL="https://$DOMAIN$PREFIX/"
+  if grep -qE 'listen[^;]*443' "$CONF"; then
+    SCHEME=https; CERT_MODE_FINAL="existente"; CERT_REASON="se usa el certificado que ya tiene $DOMAIN"
+  else
+    SCHEME=http; CERT_MODE_FINAL="ninguno"; CERT_REASON="el dominio compartido $DOMAIN solo sirve HTTP; no se toca su configuración TLS"
+    WARN "$CERT_REASON"
+  fi
+  URL="$SCHEME://$DOMAIN$PREFIX/"
 else
   LE_CERT="/etc/letsencrypt/live/$DOMAIN/fullchain.pem"; LE_KEY="/etc/letsencrypt/live/$DOMAIN/privkey.pem"
   SS_DIR=/etc/ssl/convertia; SS_CERT="$SS_DIR/$DOMAIN.crt"; SS_KEY="$SS_DIR/$DOMAIN.key"
@@ -247,15 +252,16 @@ else
   elif [ "${CERT_MODE:-}" != selfsigned ]; then
     write_site "" "" no; reload_nginx   # primero solo HTTP para el reto ACME
     LOG "Pidiendo certificado a Let's Encrypt para $DOMAIN…"
-    if OUT="$(certbot certonly --webroot -w /var/www/convertia-acme -d "$DOMAIN" --non-interactive --agree-tos \
+    if OUT="$(certbot certonly ${CERTBOT_STAGING:+--staging} --webroot -w /var/www/convertia-acme -d "$DOMAIN" --non-interactive --agree-tos \
         --register-unsafely-without-email --keep-until-expiring --deploy-hook 'systemctl reload nginx' 2>&1)"; then
       CERT_MODE_FINAL="letsencrypt"; CERT_REASON="certificado válido de Let's Encrypt"
     else
-      echo "$OUT" | tail -8 | sed 's/^/    /'
+      { echo "$OUT" | tail -8 | sed 's/^/    /'; } || true
       if grep -qiE 'too many certificates|rateLimited|rate limit' <<<"$OUT"; then
         CERT_REASON="Let's Encrypt ha rechazado la emisión por límite de emisiones (rate limit)"
       else
-        CERT_REASON="Let's Encrypt no pudo validar el dominio ($(grep -oiE 'Detail: .*' <<<"$OUT" | head -1 | cut -c1-160))"
+        DETAIL="$( { grep -oiE 'Detail: .*' <<<"$OUT" || grep -iE 'error|exception|refused|timed? ?out|unauthorized|NXDOMAIN' <<<"$OUT" | grep -v 'unexpected error occurred' || true; } | head -1 | sed 's/^[[:space:]]*//' | cut -c1-200)"
+        CERT_REASON="Let's Encrypt no ha emitido el certificado (${DETAIL:-motivo desconocido})"
       fi
       WARN "$CERT_REASON → uso un certificado autofirmado"
     fi
@@ -292,9 +298,9 @@ else
 fi
 
 # ------------------------------------------------------------------ 9. comprobación final
-HOSTHDR="$DOMAIN"
-curl --noproxy "*" -fsS -k --resolve "$DOMAIN:443:127.0.0.1" "https://$HOSTHDR$PREFIX/api/health" | grep -q '"worker":true' \
-  || DIE "nginx no sirve la aplicación en https://$DOMAIN$PREFIX/"
+SCHEME="${SCHEME:-https}"; P=443; [ "$SCHEME" = http ] && P=80
+curl --noproxy "*" -fsS -k --resolve "$DOMAIN:$P:127.0.0.1" "$SCHEME://$DOMAIN$PREFIX/api/health" | grep -q '"worker":true' \
+  || DIE "nginx no sirve la aplicación en $SCHEME://$DOMAIN$PREFIX/"
 cat > "$INFO" <<EOF
 URL="$URL"
 DOMAIN="$DOMAIN"

@@ -322,7 +322,14 @@ function detectFile(file, originalName) {
   let id = null;
   let encoding;
   if (m === 'empty') throw new DetectError('El archivo está vacío (0 bytes).', 'corrupt');
-  if (m === 'zip') id = detectZip(file, e);
+  if (m === 'zip') {
+    try { id = detectZip(file, e); } catch (err) {
+      // Un DOCX/XLSX/EPUB… roto: que el mensaje hable del documento, no del ZIP.
+      const k = byExt(e);
+      if (err.code === 'corrupt' && k && INPUTS[k]) throw new DetectError(`El documento ${INPUTS[k][1]} está dañado o incompleto y no se puede abrir.`, 'corrupt');
+      throw err;
+    }
+  }
   else if (m === 'ole') id = detectOle(file, e);
   else if (m === 'text') {
     // Texto con extensión de formato binario (p. ej. un .png que en realidad es texto): está mal.

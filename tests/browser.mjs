@@ -56,6 +56,9 @@ for (const [name, opts] of [
   const fc = await chooser.catch(() => null);
   check(!!fc, opts.hasTouch ? 'tocar el dropeador abre el selector' : 'clic en el dropeador abre el selector');
   if (fc) await fc.setFiles([path.join(FIX, 'photo.jpg')]);
+  // Deja que el navegador cierre del todo el primer selector antes de abrir otro.
+  await page.waitForSelector('.card', { timeout: 10000 }).catch(() => {});
+  await page.waitForTimeout(600);
   if (!opts.hasTouch) {
     await page.focus('#drop');
     chooser = page.waitForEvent('filechooser', { timeout: 5000 });
@@ -93,6 +96,7 @@ for (const [name, opts] of [
   const card = page.locator('.card', { hasText: 'photo.jpg' });
   await card.locator('.go').click();
   await card.locator('.done:not([hidden])').waitFor({ timeout: 60000 }).catch(() => {});
+  await page.waitForTimeout(1500); // el tamaño final "cuenta" con un muelle hasta su valor
   const saving = (await card.locator('.save').textContent().catch(() => '')) || '';
   const href = await card.locator('a.dl').getAttribute('href').catch(() => null);
   check(/→/.test(saving) && /api\/jobs\/.+\/download/.test(href || ''), 'convertir y enlace de descarga', saving.replace(/\s+/g, ' ').trim());

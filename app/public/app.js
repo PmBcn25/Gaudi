@@ -171,7 +171,7 @@
       });
       list.append(el);
       cards.push(this);
-      if (merge) return this.startMerge();
+      if (merge) { this.startMerge(); return; }
       this.setIcon(null, (file.name.split('.').pop() || '').slice(0, 5));
       if (PREVIEW.test(file.type)) this.setThumb(URL.createObjectURL(file), true);
       this.upload();

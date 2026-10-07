@@ -9,7 +9,7 @@ const check = (ok, label, detail = '') => { if (!ok) fails++; console.log(`  ${o
 
 console.log('\nErrores en lenguaje claro');
 const bad = [
-  ['corrupt.jpg', /dañada|incompleta/], ['corrupt.pdf', /PDF está dañado/], ['corrupt.docx', /dañado|incompleto/],
+  ['corrupt.jpg', /dañada|incompleta/], ['corrupt.pdf', /PDF está dañado/], ['corrupt.docx', /DOCX.*dañado/],
   ['truncated.mp4', /incompleto|dañado/], ['fake.png', /solo hay texto/], ['random.xyz', /no está soportado/],
   ['playlist.m3u8', /listas de reproducción/], ['evil.tex', /Por seguridad/], ['locked.pdf', /contraseña/],
 ];

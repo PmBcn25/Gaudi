@@ -30,7 +30,7 @@ tar -C "$ROOT" --exclude='node_modules' --exclude='.DS_Store' -czf - app deploy/
 
 say "Instalando y configurando en el servidor (paquetes, Node 20, systemd, nginx, certificado, cortafuegos)…"
 VARS=""
-for v in DOMAIN SHARED_DOMAIN BASE_PATH PUBLIC_IP CERT_MODE; do
+for v in DOMAIN SHARED_DOMAIN BASE_PATH PUBLIC_IP CERT_MODE CERTBOT_STAGING; do
   [ -n "${!v:-}" ] && VARS="$VARS $v=$(printf '%q' "${!v}")"
 done
 "$VPS" "$SUDO env$VARS bash /var/conversor/incoming/$STAMP/deploy/remote-setup.sh; rc=\$?; $SUDO rm -rf /var/conversor/incoming/$STAMP; exit \$rc"

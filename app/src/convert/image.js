@@ -59,7 +59,8 @@ async function analyze(file, input, dir, signal) {
     out = await sharpCli({ op: 'probe-thumb', input: src, thumb: path.join(dir, 'thumb.webp') }, signal);
   } catch (err) {
     // Variantes que libvips no lee (p. ej. TIFF YCbCr submuestreado): se decodifican con FFmpeg.
-    if (!SHARP_READS.has(file.format) || file.format === 'svg' || err.code === 'canceled') throw err;
+    // Solo TIFF: en el resto de formatos, si libvips no puede leerla es que está dañada.
+    if (file.format !== 'tiff' || err.code === 'canceled') throw err;
     file.meta = { ...file.meta, decoded: true };
     src = await decodable(file, input, dir, signal);
     out = await sharpCli({ op: 'probe-thumb', input: src, thumb: path.join(dir, 'thumb.webp') }, signal);

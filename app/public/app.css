@@ -1,7 +1,7 @@
 @font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-latin-var.woff2) format("woff2")}
 :root{--bg:#f6f7f9;--card:#fff;--ink:#0f172a;--ink2:#334155;--mut:#64748b;--line:#e4e7ec;--line2:#d0d5dd;--b:#4f46e5;--b2:#4338ca;--bl:#eef0ff;--ok:#16a34a;--okl:#ecfdf3;--err:#d92d20;--errl:#fef3f2;--r:14px;--sh:0 1px 2px rgba(16,24,40,.05);--sh2:0 12px 32px -12px rgba(16,24,40,.18);
---spring:linear(0,.06,.202,.38,.561,.723,.856,.955,1.023,1.062,1.081,1.083,1.075,1.062,1.047,1.032,1.019,1.009,1.002,.997,.994,.993,.993,.994,1);
---soft:linear(0,.079,.247,.433,.602,.738,.841,.912,.959,.987,1.002,1.009,1.011,1.011,1.009,1.007,1.005,1.003,1.002,1.001,1)}
+--spring:cubic-bezier(.34,1.45,.64,1);--soft:cubic-bezier(.22,1,.36,1)}
+@supports (transition-timing-function:linear(0,1)){:root{--spring:linear(0,.06,.202,.38,.561,.723,.856,.955,1.023,1.062,1.081,1.083,1.075,1.062,1.047,1.032,1.019,1.009,1.002,.997,.994,.993,.993,.994,1);--soft:linear(0,.079,.247,.433,.602,.738,.841,.912,.959,.987,1.002,1.009,1.011,1.011,1.009,1.007,1.005,1.003,1.002,1.001,1)}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
