@@ -1,8 +1,9 @@
 # Convertia — runbook
 
-Conversor de archivos con formato SaaS (landing + herramienta + precios + FAQ + acceso + legal).
-La herramienta funciona **sin cuentas**: sin registro, sin login, sin cookies, sin historial.
-Precios, cuentas y textos legales son *placeholder* (fake door): están, pero no hacen nada.
+Conversor de archivos con formato SaaS (landing + herramienta + precios + FAQ + legal).
+La herramienta funciona sin registro, sin cookies y sin historial. No hay inicio de sesión ni alta de
+usuarios en ninguna parte (ni en la web ni en el código). Precios: un único plan, Gratis (0 €).
+Los textos legales son provisionales y lo marcan.
 
 ## Estructura
 
@@ -15,7 +16,7 @@ app/                      la aplicación (Node.js 20 + Express, sin build)
   src/detect.js           tipo real del archivo por su contenido (cabeceras, ZIP, OLE2, texto)
   src/convert/*.js        imagen (sharp/libheif/FFmpeg), audio/vídeo (FFmpeg), LibreOffice,
                           Ghostscript/qpdf, Pandoc (+ lua/safe.lua), subtítulos
-  public/                 index.html, acceso.html, terminos.html, privacidad.html, app.css, app.js,
+  public/                 index.html, terminos.html, privacidad.html, app.css, app.js,
                           icon.svg, fonts/inter-latin-var.woff2 (todo relativo, sin terceros)
 deploy/deploy.sh          despliegue con una orden (idempotente)
 deploy/remote-setup.sh    lo que se ejecuta en el servidor (como root)
@@ -101,7 +102,7 @@ reinician `convertia-web` entre tandas (el contador vive solo en memoria).
 | `formats.mjs` | cada formato de salida al menos una vez, con cabecera mágica y códec (ffprobe) |
 | `progress.mjs` | eventos SSE por segundo, salto máximo, monotonía; páginas de Ghostscript |
 | `errors-queue.mjs` | errores claros, cola «1º de 2», 1 LibreOffice a la vez, cancelar, límite 20/h |
-| `browser.mjs` | Chromium escritorio y 375 px: desbordes, consola, terceros, dropeador, acceso |
+| `browser.mjs` | Chromium escritorio y 375 px: desbordes, consola, terceros, dropeador, sin login ni planes de pago |
 | `weight.mjs` | peso gzip, `?v=hash` + immutable, HTML no-cache + ETag, CSP, sin cookies |
 | `external.sh` | HTTPS con certificado válido, HTTP→HTTPS, puerto interno cerrado desde fuera |
 | `reboot.sh` | `reboot` del VPS y comprobación de que todo vuelve solo |

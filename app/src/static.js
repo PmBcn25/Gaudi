@@ -36,7 +36,7 @@ function load() {
 
 function middleware() {
   const assets = load();
-  const ROUTES = { '': 'index.html', 'index.html': 'index.html', acceso: 'acceso.html', terminos: 'terminos.html', privacidad: 'privacidad.html' };
+  const ROUTES = { '': 'index.html', 'index.html': 'index.html', terminos: 'terminos.html', privacidad: 'privacidad.html' };
   return (req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') return next();
     let p = decodeURIComponent(req.path.replace(/^\/+/, ''));

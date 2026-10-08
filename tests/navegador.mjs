@@ -107,6 +107,13 @@ async function expectError(file, re) {
 }
 
 console.log(`\nEdición navegador en ${base}`);
+{
+  total++;
+  const html = await page.content();
+  const pass = !/iniciar sesi|crear cuenta|#entrar|#crear|9 €|29 €/i.test(html) && (await page.locator('.plan').count()) === 1;
+  if (pass) ok++;
+  console.log(`  ${pass ? '✓' : '✗'} sin «Iniciar sesión» ni «Crear cuenta»; un único plan (0 €)`);
+}
 console.log('Imágenes');
 await run('photo.jpg', 'img-webp', 'webp');
 await run('photo.jpg', 'img-png', 'png');

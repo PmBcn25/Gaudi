@@ -15,13 +15,6 @@
   const top = $('.top');
   if (top) addEventListener('scroll', () => top.classList.toggle('sc', scrollY > 4), { passive: true });
 
-  // Formularios de acceso (maqueta): no envían ni guardan nada.
-  $$('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let m = $('.msg', f);
-    if (!m) { m = d.createElement('p'); m.className = 'msg'; m.setAttribute('role', 'status'); f.append(m); }
-    m.innerHTML = 'Las cuentas aún no están abiertas. El conversor funciona sin registro: <a href="./#herramienta">úsalo ahora</a>.';
-  }));
 
   // ---------------------------------------------------------------- avisos
   const toasts = $('#toasts');

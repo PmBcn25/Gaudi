@@ -10,4 +10,5 @@ en lenguaje claro.
 - Pruebas contra la URL pública: `BASE_URL=https://… tests/run-all.sh [--reboot]`.
 - Edición navegador (sin servidor, publicada en Claude): https://claude.ai/artifact/HK5nQbX2xk3VUUthyLdybS — código en `edicion-navegador/`.
 
-Precios, cuentas y textos legales son maquetas (*fake door*): no hay pagos, ni usuarios, ni correos.
+Precios: un único plan, Gratis (0 €). No hay inicio de sesión, ni alta de usuarios, ni pagos. Los textos
+legales son provisionales.

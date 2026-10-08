@@ -1,7 +1,7 @@
 // La web en un navegador real (Chromium): escritorio y móvil (375 px).
 // Sin desbordes horizontales, sin errores de consola, sin recursos de terceros,
-// el dropeador funciona (clic, teclado, arrastrar a la ventana, pegar) y los
-// formularios de acceso no envían nada.
+// el dropeador funciona (clic, teclado, arrastrar a la ventana, pegar) y no hay
+// rastro de inicio de sesión, registro ni planes de pago.
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
@@ -134,20 +134,13 @@ for (const [name, opts] of [
     check(bar && box && box.width > 250, 'barra inferior fija con «+» y «Convertir todo» a ancho completo', box ? `${Math.round(box.width)}px` : '');
   }
 
-  // Acceso: solo correo, nunca contraseña; al enviar no sale ninguna petición.
-  await page.goto(BASE + 'acceso.html#crear');
-  const pw = await page.locator('input[type=password]').count();
-  check(pw === 0, 'la página de acceso no pide contraseña');
-  const sent = [];
-  page.on('request', (r) => sent.push(r.url()));
-  for (const f of ['#entrar', '#crear']) {
-    await page.fill(`${f} input[type=email]`, 'prueba@example.com');
-    await page.click(`${f} button[type=submit]`);
-  }
-  await page.waitForTimeout(800);
-  const msgs = await page.$$eval('form .msg', (els) => els.map((e) => e.textContent));
-  check(sent.length === 0 && msgs.length === 2 && msgs.every((m) => /aún no están abiertas/.test(m)), 'los formularios no envían nada y muestran el aviso', `${sent.length} peticiones`);
-  await page.screenshot({ path: path.join(OUTDIR, `web-${slug}-acceso.png`) });
+  // Sin inicio de sesión, registro ni planes de pago: ni en la página ni en enlaces.
+  await page.goto(BASE);
+  const html = await page.content();
+  check(!/iniciar sesi|crear cuenta|acceso\.html|9 €|29 €/i.test(html) && (await page.locator('.plan').count()) === 1,
+    'sin «Iniciar sesión» ni «Crear cuenta»; un único plan (0 €)');
+  const gone = await page.request.get(BASE + 'acceso.html');
+  check(gone.status() === 404, 'acceso.html ya no existe', String(gone.status()));
   for (const p of ['terminos.html', 'privacidad.html']) {
     await page.goto(BASE + p);
     o = await overflow(page);

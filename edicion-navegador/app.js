@@ -17,14 +17,14 @@
   class UserError extends Error { constructor(m, code = 'failed') { super(m); this.user = true; this.code = code; } }
   const canceled = () => new UserError('Conversión cancelada.', 'canceled');
 
-  // ---------------------------------------------------------------- vistas (#acceso, #terminos, #privacidad)
-  const VIEWS = { acceso: 'v-acceso', entrar: 'v-acceso', crear: 'v-acceso', terminos: 'v-terminos', privacidad: 'v-privacidad', cookies: 'v-privacidad' };
+  // ---------------------------------------------------------------- vistas (#terminos, #privacidad)
+  const VIEWS = { terminos: 'v-terminos', privacidad: 'v-privacidad', cookies: 'v-privacidad' };
   function route() {
     const h = location.hash.slice(1);
     const v = VIEWS[h] || 'v-inicio';
-    for (const id of ['v-inicio', 'v-acceso', 'v-terminos', 'v-privacidad']) $(`#${id}`).hidden = id !== v;
-    const target = h === 'entrar' ? $('#f-entrar') : h === 'crear' ? $('#f-crear') : h && d.getElementById(h);
-    if (target && v !== 'v-inicio' && target.tagName === 'FORM') { target.scrollIntoView({ block: 'center' }); $('input', target).focus({ preventScroll: true }); } else if (target) target.scrollIntoView(); else scrollTo(0, 0);
+    for (const id of ['v-inicio', 'v-terminos', 'v-privacidad']) $(`#${id}`).hidden = id !== v;
+    const target = h && d.getElementById(h);
+    if (target) target.scrollIntoView(); else scrollTo(0, 0);
   }
   addEventListener('hashchange', route);
   route();
@@ -32,13 +32,6 @@
   const top = $('.top');
   addEventListener('scroll', () => top.classList.toggle('sc', scrollY > 4), { passive: true });
 
-  // Acceso (maqueta): no envía ni guarda nada.
-  $$('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let m = $('.msg', f);
-    if (!m) { m = d.createElement('p'); m.className = 'msg'; m.setAttribute('role', 'status'); f.append(m); }
-    m.innerHTML = 'Las cuentas aún no están abiertas. El conversor funciona sin registro: <a href="#herramienta">úsalo ahora</a>.';
-  }));
 
   // ---------------------------------------------------------------- avisos
   const toasts = $('#toasts');
