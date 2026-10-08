@@ -1,0 +1,15 @@
+Bibliotecas incluidas sin modificar (salvo gifenc, solo envuelto como global):
+- pdf-lib 1.17.1 — MIT
+- pdfjs-dist 3.11.174 (pdf.js, Mozilla) — Apache-2.0
+- xlsx 0.18.5 (SheetJS Community Edition) — Apache-2.0
+- mammoth 1.8.0 — BSD-2-Clause
+- marked 12.0.2 — MIT
+- turndown 7.2.0 — MIT
+- lamejs 1.2.1 — LGPL-3.0 (se carga como archivo aparte, sin modificar)
+- fflate 0.8.2 — MIT
+- gifenc 1.0.3 — MIT
+- Inter (tipografía, embebida en la página) — SIL Open Font License 1.1
+
+Nota: en xlsx, mammoth, pdf-lib y pdf.worker los bytes de control que había dentro de cadenas
+y los caracteres U+FFFD se han reescrito como secuencias \xNN / \uFFFD equivalentes
+(mismo comportamiento) para poder publicarlos.

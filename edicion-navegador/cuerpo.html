@@ -1,0 +1,210 @@
+<svg class="sprite" aria-hidden="true">
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 15V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+<symbol id="i-audio" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13.5" height="12" rx="2.5"/><path d="m16 10 5.5-3v10L16 14"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+<symbol id="i-pdf" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.5 17v-4h1.5a1.2 1.2 0 0 1 0 2.4H8.5"/></symbol>
+<symbol id="i-text" viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13M9 8h6"/></symbol>
+<symbol id="i-subtitle" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 15h4m3 0h3M7 11h2m3 0h5"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.9 7.5 9 4.3-1.1 7.5-4.4 7.5-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/></symbol>
+<symbol id="i-logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" class="lg-b"/><path class="lg-a" d="M9 13h12l-3.5-3.5M23 19H11l3.5 3.5"/></symbol>
+</svg>
+<a class="skip" href="#herramienta">Saltar al conversor</a>
+<header class="top">
+ <div class="wrap top-in">
+  <a class="brand" href="#inicio" aria-label="Convertia, inicio"><svg class="logo"><use href="#i-logo"/></svg>Convertia</a>
+  <nav class="nav" aria-label="Secciones"><a href="#como">Cómo funciona</a><a href="#formatos">Formatos</a><a href="#precios">Precios</a><a href="#faq">Preguntas</a></nav>
+  <div class="acts"><a class="link login" href="#entrar">Iniciar sesión</a><a class="btn btn-s" href="#crear">Crear cuenta</a></div>
+ </div>
+</header>
+
+<main id="v-inicio">
+<section class="hero" id="inicio">
+ <div class="wrap">
+  <p class="tag">Gratis · sin registro · sin subir nada</p>
+  <h1>Convierte cualquier archivo, <span>sin registrarte</span></h1>
+  <p class="lead">Imágenes, audio, vídeo, documentos, PDF, textos y subtítulos. Se convierten aquí mismo, en tu navegador: tus archivos no salen de tu dispositivo.</p>
+  <div class="tool" id="herramienta">
+   <div class="drop" id="drop" role="button" tabindex="0" aria-describedby="drop-lim">
+    <span class="drop-ic"><svg><use href="#i-up"/></svg></span>
+    <span class="drop-t"><strong class="drop-main">Suelta aquí tus archivos</strong><span class="drop-sub">o pulsa para elegirlos</span></span>
+    <span class="chips" aria-hidden="true"><i>JPG</i><i>PNG</i><i>WebP</i><i>SVG</i><i>MP3</i><i>WAV</i><i>MP4</i><i>PDF</i><i>DOCX</i><i>XLSX</i><i>CSV</i><i>MD</i><i>SRT</i><i>+20</i></span>
+    <span class="lim" id="drop-lim">Hasta 200 MB por archivo · vídeos de hasta 5 min · varios a la vez</span>
+   </div>
+   <input type="file" id="pick" multiple hidden>
+   <div class="merge" id="merge" hidden><span><svg><use href="#i-pdf"/></svg><b id="merge-n">2</b> PDF listos para unir en uno, en el orden de las tarjetas</span><button class="btn btn-s" id="merge-go" type="button">Unir PDF</button></div>
+   <ol class="cards" id="cards"></ol>
+   <p class="privacy"><svg><use href="#i-lock"/></svg>Todo ocurre en tu navegador: tus archivos no se suben a ningún servidor y no los ve nadie.</p>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="como">
+ <div class="wrap">
+  <h2>Cómo funciona</h2>
+  <ol class="steps">
+   <li><b>1</b><h3>Suelta tus archivos</h3><p>Arrástralos a cualquier parte de la página, pégalos con Ctrl+V o elígelos. Puedes añadir varios a la vez.</p></li>
+   <li><b>2</b><h3>Elige el formato</h3><p>Miramos qué es cada archivo por dentro, no solo su extensión, y te ofrecemos solo los destinos que tienen sentido.</p></li>
+   <li><b>3</b><h3>Guarda el resultado</h3><p>Ves el progreso real de cada paso y guardas el archivo en cuanto termina. Nada sale de tu dispositivo.</p></li>
+  </ol>
+ </div>
+</section>
+
+<section class="sec alt" id="formatos">
+ <div class="wrap">
+  <h2>Formatos</h2>
+  <p class="sub">Siete familias, convertidas en tu navegador. Lo que necesita un servidor está en la edición con servidor.</p>
+  <div class="fams">
+   <article class="fam"><h3><svg><use href="#i-image"/></svg>Imágenes</h3><p><em>Entra:</em> JPEG, PNG, WebP, AVIF, GIF, BMP, ICO y SVG (y HEIC si usas Safari).</p><p><em>Sale:</em> WebP, JPEG, PNG, GIF, BMP, ICO (favicon de 16 a 256 px) y PDF.</p></article>
+   <article class="fam"><h3><svg><use href="#i-audio"/></svg>Audio</h3><p><em>Entra:</em> MP3, WAV, FLAC, OGG, Opus, AAC/M4A y WebA, los que tu navegador sabe leer.</p><p><em>Sale:</em> MP3 (64 a 320 kbps) y WAV, con volumen normalizado si quieres.</p></article>
+   <article class="fam"><h3><svg><use href="#i-video"/></svg>Vídeo</h3><p><em>Entra:</em> MP4, WebM y MOV que tu navegador reproduzca, de hasta 5 minutos.</p><p><em>Sale:</em> GIF animado, un fotograma en JPG o PNG, o solo el audio en MP3 o WAV.</p></article>
+   <article class="fam"><h3><svg><use href="#i-doc"/></svg>Documentos</h3><p><em>Entra:</em> DOCX · XLSX, XLS, ODS, CSV y TSV.</p><p><em>Sale:</em> HTML, Markdown y TXT · XLSX, ODS, CSV, HTML y JSON.</p></article>
+   <article class="fam"><h3><svg><use href="#i-pdf"/></svg>PDF</h3><p><em>Entra:</em> cualquier PDF sin contraseña.</p><p><em>Sale:</em> unido con otros, páginas sueltas, uno por página, rotado, como imágenes JPG o PNG y como texto.</p></article>
+   <article class="fam"><h3><svg><use href="#i-text"/></svg>Texto</h3><p><em>Entra:</em> Markdown, HTML y TXT.</p><p><em>Sale:</em> HTML, DOCX, Markdown y texto plano.</p></article>
+   <article class="fam"><h3><svg><use href="#i-subtitle"/></svg>Subtítulos</h3><p><em>Entra:</em> SRT, WebVTT, ASS y SSA.</p><p><em>Sale:</em> SRT, WebVTT y ASS, entre sí.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="distinto">
+ <div class="wrap">
+  <h2>Por qué es distinto</h2>
+  <div class="why">
+   <div><span class="ico"><svg><use href="#i-bolt"/></svg></span><h3>Progreso de verdad</h3><p>La barra cuenta muestras de audio codificadas, fotogramas y páginas reales. Cuando un paso no da porcentaje, te decimos qué está haciendo en vez de inventarlo.</p></div>
+   <div><span class="ico"><svg><use href="#i-shield"/></svg></span><h3>Privado por diseño</h3><p>No hay servidor que vea tus archivos: se convierten en tu dispositivo. Sin cuentas, sin cookies y sin historial.</p></div>
+   <div><span class="ico"><svg><use href="#i-chat"/></svg></span><h3>Errores que se entienden</h3><p>«El PDF está protegido con contraseña» o «ese PDF solo tiene 5 páginas». Nunca un «Error 500».</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec alt" id="precios">
+ <div class="wrap">
+  <h2>Precios</h2>
+  <p class="sub">Empieza gratis. Sin tarjeta y sin cuenta.</p>
+  <div class="plans">
+   <div class="plan"><h3>Gratis</h3><p class="price">0 €</p><p class="pd">Para convertir sin pensarlo.</p><ul><li>Todas las conversiones de esta edición</li><li>Sin límite de conversiones</li><li>Archivos de hasta 200 MB</li><li>Sin registro y sin anuncios</li></ul><a class="btn btn-o" href="#herramienta">Empezar ahora</a></div>
+   <div class="plan pop"><span class="badge">El más elegido</span><h3>Pro</h3><p class="price">9 €<small>/mes</small></p><p class="pd">Para quien convierte a diario.</p><ul><li>Conversión en servidor: vídeo a MP4, HEIC, PPTX…</li><li>Archivos de hasta 2 GB</li><li>Vídeos de hasta 1 hora</li><li>Cola prioritaria</li><li>Lotes en un solo ZIP</li></ul><a class="btn" href="#crear">Crear cuenta</a></div>
+   <div class="plan"><h3>Equipo</h3><p class="price">29 €<small>/mes</small></p><p class="pd">Para equipos y empresas.</p><ul><li>Todo lo de Pro</li><li>Hasta 5 personas</li><li>API y automatizaciones</li><li>Factura con IVA</li><li>Soporte prioritario</li></ul><a class="btn btn-o" href="#crear">Crear cuenta</a></div>
+  </div>
+  <p class="fine">Los planes de pago aún no están a la venta.</p>
+ </div>
+</section>
+
+<section class="sec" id="faq">
+ <div class="wrap narrow">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿De verdad es gratis y sin registro?</summary><p>Sí. Entras, sueltas el archivo y lo guardas. No pedimos correo ni contraseña y no usamos cookies.</p></details>
+  <details><summary>¿Qué pasa con mis archivos?</summary><p>Nada: no salen de tu dispositivo. La conversión la hace tu propio navegador, y al cerrar la pestaña no queda ni rastro.</p></details>
+  <details><summary>¿Por qué algunos archivos se guardan dentro de un ZIP?</summary><p>Esta página vive dentro de Claude, que solo deja guardar ciertos tipos de archivo: JPG, PNG, WebP, GIF, PDF, DOCX, XLSX, CSV, HTML, Markdown, TXT, JSON, ZIP y pocos más. Los demás (MP3, WAV, SRT, ICO, ODS…) se guardan dentro de un ZIP para que puedas descargarlos.</p></details>
+  <details><summary>¿Por qué no puedo convertir un HEIC, un PPTX o un vídeo a MP4?</summary><p>Esas conversiones necesitan FFmpeg, LibreOffice o Ghostscript en un servidor. Están en la edición con servidor de Convertia. Las fotos HEIC sí se abren aquí si usas Safari.</p></details>
+  <details><summary>¿Cuánto pueden pesar?</summary><p>Hasta 200 MB por archivo y vídeos de hasta 5 minutos. El límite real es la memoria de tu dispositivo: en un móvil, mejor archivos más pequeños.</p></details>
+  <details><summary>¿Por qué mi archivo está «en cola»?</summary><p>Para no colgar el navegador convertimos como mucho dos archivos a la vez. Si hay más, verás su posición real en la cola, por ejemplo «2º de 3».</p></details>
+  <details><summary>¿Puedo convertir varios archivos a la vez?</summary><p>Sí. Cada archivo tiene su tarjeta, su progreso y su botón para guardar. «Convertir todo» lanza todos de una vez y, si añades dos o más PDF, puedes unirlos en uno.</p></details>
+  <details><summary>¿Hay atajos de teclado?</summary><p>Ctrl+V (⌘+V en Mac) pega un archivo del portapapeles y Escape cancela lo que esté en marcha.</p></details>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="wrap cta-in">
+  <h2>¿Tienes un archivo a mano?</h2>
+  <p>Conviértelo ahora. Sin cuentas, sin esperas y sin subirlo a ninguna parte.</p>
+  <button class="btn btn-w" type="button" data-pick>Elegir archivos</button>
+ </div>
+</section>
+</main>
+
+<main id="v-acceso" class="page" hidden>
+ <div class="wrap">
+  <p class="mock" role="note"><b>Maqueta.</b> Esta parte es una vista previa: las cuentas todavía no existen. Los formularios no envían ni guardan nada.</p>
+  <h1>Tu cuenta en Convertia</h1>
+  <p>No necesitas cuenta para convertir. Cuando abramos los planes Pro y Equipo, podrás entrar aquí con tu correo.</p>
+  <div class="auth">
+   <form id="f-entrar" data-mock novalidate>
+    <h2>Iniciar sesión</h2>
+    <label for="email-entrar">Correo electrónico</label>
+    <input type="email" id="email-entrar" name="email" autocomplete="email" placeholder="tu@correo.com" required>
+    <p class="hint">Te enviaríamos un enlace para entrar. Sin contraseñas.</p>
+    <button class="btn" type="submit">Enviar enlace</button>
+   </form>
+   <form id="f-crear" data-mock novalidate>
+    <h2>Crear cuenta</h2>
+    <label for="email-crear">Correo electrónico</label>
+    <input type="email" id="email-crear" name="email" autocomplete="email" placeholder="tu@correo.com" required>
+    <p class="hint">Solo tu correo. Nunca te pediremos una contraseña.</p>
+    <button class="btn" type="submit">Crear cuenta</button>
+   </form>
+  </div>
+  <p class="fine">¿Solo quieres convertir un archivo? <a href="#herramienta">Usa el conversor sin registro</a>.</p>
+ </div>
+</main>
+
+<main id="v-terminos" class="page" hidden>
+ <div class="wrap">
+  <p class="mock" role="note"><b>Texto provisional.</b> Estos términos son un borrador sin validez legal. Las partes marcadas como <span class="pend">[Pendiente]</span> se completarán antes de abrir los planes de pago.</p>
+  <h1>Términos de uso</h1>
+  <p>Última actualización: octubre de 2026.</p>
+  <h2>1. Qué es Convertia</h2>
+  <p>Convertia es un conversor de archivos. Esta edición convierte en tu navegador, gratis, sin registro y sin anuncios.</p>
+  <h2>2. Uso permitido</h2>
+  <p>Puedes convertir archivos que te pertenezcan o que tengas derecho a usar. No está permitido usar el servicio para infringir derechos de terceros ni para distribuir contenido ilegal.</p>
+  <h2>3. Límites</h2>
+  <p>Archivos de hasta 200 MB y vídeos de hasta 5 minutos. La velocidad y el tamaño máximo real dependen de tu dispositivo.</p>
+  <h2>4. Tus archivos</h2>
+  <p>Tus archivos siguen siendo tuyos y no salen de tu dispositivo. Más detalles en la <a href="#privacidad">política de privacidad</a>.</p>
+  <h2>5. Garantías y responsabilidad</h2>
+  <p><span class="pend">[Pendiente]</span> El servicio se ofrece tal cual. Guarda siempre una copia de tus originales.</p>
+  <h2>6. Planes de pago</h2>
+  <p><span class="pend">[Pendiente]</span> Los planes Pro y Equipo aún no están a la venta.</p>
+  <h2>7. Titular del servicio y contacto</h2>
+  <p><span class="pend">[Pendiente]</span></p>
+  <h2>8. Ley aplicable</h2>
+  <p><span class="pend">[Pendiente]</span></p>
+ </div>
+</main>
+
+<main id="v-privacidad" class="page" hidden>
+ <div class="wrap">
+  <p class="mock" role="note"><b>Texto provisional.</b> La parte técnica describe cómo funciona hoy esta página. La parte legal está marcada como <span class="pend">[Pendiente]</span>.</p>
+  <h1>Privacidad</h1>
+  <p>Última actualización: octubre de 2026.</p>
+  <h2>Qué pasa con tus archivos</h2>
+  <ul>
+   <li>Se convierten en tu propio navegador, con código que se descarga junto a la página. No se suben a ningún servidor.</li>
+   <li>El resultado se guarda en tu dispositivo solo cuando tú lo confirmas.</li>
+   <li>Quitar una tarjeta o cerrar la pestaña borra el archivo de la memoria del navegador.</li>
+   <li>Nadie ve tus archivos y no se usan para nada más que la conversión que pides.</li>
+  </ul>
+  <h2>Qué datos guardamos</h2>
+  <ul>
+   <li>Ninguno: no hay cuentas, ni historial, ni correo, ni contraseñas, ni recuento por IP.</li>
+   <li>La página no escribe nada en el almacenamiento de tu navegador.</li>
+  </ul>
+  <h2 id="cookies">Cookies</h2>
+  <p>No usamos cookies. Ni propias, ni de terceros. Tampoco analítica ni píxeles de seguimiento.</p>
+  <h2>Responsable del tratamiento</h2>
+  <p><span class="pend">[Pendiente]</span></p>
+  <h2>Base legal y derechos</h2>
+  <p><span class="pend">[Pendiente]</span></p>
+ </div>
+</main>
+
+<footer class="foot">
+ <div class="wrap foot-in">
+  <div class="fb"><a class="brand" href="#inicio"><svg class="logo"><use href="#i-logo"/></svg>Convertia</a><p>Conversor de archivos gratis, sin registro y sin anuncios. Edición navegador.</p></div>
+  <div><h4>Producto</h4><a href="#herramienta">Conversor</a><a href="#formatos">Formatos</a><a href="#precios">Precios</a><a href="#faq">Preguntas</a></div>
+  <div><h4>Cuenta</h4><a href="#entrar">Iniciar sesión</a><a href="#crear">Crear cuenta</a></div>
+  <div><h4>Legal</h4><a href="#terminos">Términos de uso</a><a href="#privacidad">Privacidad</a><a href="#cookies">Cookies: no usamos</a></div>
+ </div>
+ <p class="wrap copy">© 2026 Convertia · Hecho con pdf.js, pdf-lib, SheetJS, mammoth, marked, turndown, lamejs, fflate y gifenc.</p>
+</footer>
+<div class="bar" id="bar"><button class="btn-plus" type="button" data-pick aria-label="Añadir archivos"><svg><use href="#i-plus"/></svg></button><button class="btn" id="all" type="button" disabled>Convertir todo</button></div>
+<div class="veil" id="veil" aria-hidden="true"><div class="veil-in"><svg><use href="#i-up"/></svg><b>Suéltalos en cualquier sitio</b></div></div>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<script src="app.js"></script>

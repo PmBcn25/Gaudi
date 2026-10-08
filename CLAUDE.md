@@ -117,6 +117,28 @@ scripts/vps.sh 'cat /var/conversor/deploy-info.env'
 Privacidad: ninguna tabla ni log relaciona IP y archivo. El límite por IP usa un HMAC con una clave
 aleatoria que muere con el proceso. nginx no escribe access_log para Convertia.
 
+## Edición navegador (artifact de Claude)
+
+`edicion-navegador/` es una versión que no necesita servidor: la página convierte en el navegador de quien
+la usa y está publicada como artifact de claude.ai: https://claude.ai/artifact/HK5nQbX2xk3VUUthyLdybS
+(privado hasta que se comparta desde su menú Compartir).
+
+- Hace: imágenes (Canvas: WebP, JPEG, PNG, GIF, BMP, ICO, PDF), audio (Web Audio + lamejs: MP3, WAV),
+  vídeo que el navegador reproduzca (GIF, fotograma, solo audio), DOCX (mammoth), hojas (SheetJS),
+  PDF (pdf-lib + pdf.js: unir, extraer, separar, rotar, imágenes, texto), Markdown/HTML/TXT (marked,
+  turndown y un escritor DOCX propio) y subtítulos. Cola local de 2 a la vez y progreso real.
+- No hace (necesita servidor): HEIC fuera de Safari, PPTX/DOC/ODT/RTF/EPUB, vídeo a MP4/WebM, comprimir PDF.
+- Claude solo deja guardar ciertas extensiones (jpg, png, webp, gif, pdf, docx, xlsx, csv, html, md, txt,
+  json, zip…): el resto (mp3, wav, srt, ico, ods…) se guarda dentro de un ZIP. Guardar usa la capacidad
+  `downloads` del artifact; fuera de Claude, una descarga normal.
+- Editar: `cuerpo.html` y `estilo.css` (lleva Inter embebida), luego `python3 edicion-navegador/construir.py`
+  para generar `index.html`; `app.js`, `mp3-worker.js` y `vendor/` se publican como archivos aparte.
+  Para republicar en la misma URL: Artifact con `file_path` = `edicion-navegador/index.html`, `url` de arriba,
+  los mismos `files` y `capabilities: {downloads: true}`.
+- Las bibliotecas de `vendor/` están sin modificar salvo bytes de control y U+FFFD dentro de cadenas,
+  reescritos como `\xNN`/`\uFFFD` (el servicio de artifacts no los admite). Ver `vendor/LICENCIAS.txt`.
+- Prueba: `node tests/navegador.mjs` (Chromium; sirve la página en local y descarga cada resultado).
+
 ## Trampas conocidas (no volver a tropezar)
 
 - Pandoc 3.1.x (Ubuntu 24.04) falla con `--sandbox`: no se usa; lo compensan `src/lua/safe.lua`
