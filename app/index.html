@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gaudí · Visualizador de reformas</title>
+  <meta name="description" content="Sube la foto de un piso o estancia, elige las reformas y obtén una imagen de cómo quedará, manteniendo la estructura original.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; style-src 'self'; script-src 'self'; connect-src 'self' https://generativelanguage.googleapis.com https://api.openai.com; manifest-src 'self'; worker-src 'self'">
+  <meta name="theme-color" content="#1D4E5A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gaudí">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icono.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="marca">
+      <img src="icons/icono.svg" alt="" width="36" height="36">
+      <div>
+        <h1 data-nombre-app>Gaudí</h1>
+        <p>Visualizador de reformas</p>
+      </div>
+    </div>
+    <nav class="pestanas" aria-label="Secciones">
+      <button class="pestana activa" data-ir="proyecto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Proyecto</span></button>
+      <button class="pestana" data-ir="resultado"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM12 5v14"/></svg><span>Resultado</span></button>
+      <button class="pestana" data-ir="historial"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg><span>Historial</span></button>
+      <button class="pestana" data-ir="ajustes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg><span>Ajustes</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================================================ PROYECTO -->
+    <section class="vista activa" id="vista-proyecto" aria-labelledby="t-proyecto">
+      <h2 id="t-proyecto" class="oculto">Proyecto</h2>
+      <div class="rejilla-proyecto">
+        <div class="columna-foto">
+          <article class="tarjeta">
+            <header class="tarjeta-cab"><span class="paso">1</span><h3>Foto original</h3></header>
+            <div class="zona-foto" id="zona-foto">
+              <div class="foto-vacia" id="foto-vacia">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>
+                <p><strong>Sube la foto del piso o de la estancia</strong><br><span>Arrástrala aquí o elige una opción</span></p>
+              </div>
+              <img id="foto-previa" alt="Foto original" hidden>
+            </div>
+            <div class="botones-foto">
+              <label class="boton secundario"><input type="file" accept="image/*" capture="environment" id="entrada-camara" hidden>Hacer foto</label>
+              <label class="boton secundario"><input type="file" accept="image/*" id="entrada-galeria" hidden>Elegir imagen</label>
+            </div>
+            <p class="ayuda" id="foto-info">JPG, PNG o WEBP. Se reduce a 2048 px para enviarla más rápido.</p>
+          </article>
+
+          <article class="tarjeta panel-generar">
+            <header class="tarjeta-cab"><span class="paso">6</span><h3>Resumen</h3></header>
+            <dl class="resumen" id="resumen"></dl>
+            <details class="prompt-detalle">
+              <summary>Ver instrucciones para la IA</summary>
+              <p class="ayuda">Se escriben en inglés porque los modelos de imagen las siguen con más precisión.</p>
+              <pre id="prompt-texto"></pre>
+              <button class="boton fantasma" id="copiar-prompt" type="button">Copiar instrucciones</button>
+            </details>
+            <div class="acciones-generar">
+              <button class="boton primario grande" id="generar" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 4.6L18 9.5l-4.2 1.9L12 16l-1.8-4.6L6 9.5l4.2-1.9zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>
+                Generar imagen
+              </button>
+              <button class="boton fantasma" id="modo-asistido" type="button">Sin clave: usar Gemini o ChatGPT</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="columna-form">
+          <article class="tarjeta">
+            <header class="tarjeta-cab"><span class="paso">2</span><h3>Proyecto y estancia</h3></header>
+            <div class="campos">
+              <label class="campo ancho"><span>Nombre del proyecto</span><input type="text" id="c-nombre" maxlength="80" autocomplete="off"></label>
+              <div class="campo" data-campo="estancia"></div>
+              <div class="campo" data-campo="tipo"></div>
+              <div class="campo ancho" data-campo="estilo"></div>
+              <div class="campo ancho" data-campo="intensidad" data-tipo="segmentos"></div>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <header class="tarjeta-cab"><span class="paso">3</span><h3>Reformas por elemento</h3></header>
+            <div class="campos">
+              <div class="campo" data-campo="suelo"></div>
+              <div class="campo" data-campo="techo"></div>
+              <div class="campo" data-campo="paredes"></div>
+              <div class="campo" data-campo="color"></div>
+              <div class="campo" data-campo="carpinteria"></div>
+              <div class="campo" data-campo="iluminacion"></div>
+              <div class="campo" data-campo="cocina"></div>
+              <div class="campo" data-campo="encimera"></div>
+              <div class="campo" data-campo="bano"></div>
+              <div class="campo" data-campo="mobiliario"></div>
+              <label class="campo ancho"><span>Notas adicionales <em>(opcional)</em></span><textarea id="c-notas" rows="2" maxlength="600" placeholder="Ej.: sofá verde, estantería a medida, plantas naturales"></textarea></label>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <header class="tarjeta-cab"><span class="paso">4</span><h3>Formato de la imagen</h3></header>
+            <div class="campos">
+              <div class="campo" data-campo="proporcion"></div>
+              <div class="campo" data-campo="estiloImagen"></div>
+              <div class="campo ancho" data-campo="calidad" data-tipo="segmentos"></div>
+              <div class="campo ancho" data-campo="luz"></div>
+            </div>
+          </article>
+
+          <article class="tarjeta estructura">
+            <header class="tarjeta-cab"><span class="paso">5</span><h3>Estructura original</h3><span class="sello">Siempre se conserva</span></header>
+            <p>Paredes y tabiques, ventanas, puertas y huecos, techo y altura, vigas, pilares, escaleras, dimensiones y la perspectiva exacta de la foto se mantienen intactos.</p>
+            <label class="campo ancho"><span>Conservar también <em>(opcional)</em></span><input type="text" id="c-conservar" maxlength="200" placeholder="Ej.: la chimenea, el radiador de hierro" autocomplete="off"></label>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ RESULTADO -->
+    <section class="vista" id="vista-resultado" aria-labelledby="t-resultado">
+      <div class="vacio" id="resultado-vacio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM12 5v14"/></svg>
+        <h2>Aún no hay resultado</h2>
+        <p>Sube una foto en <strong>Proyecto</strong>, elige las reformas y pulsa <strong>Generar imagen</strong>.</p>
+        <button class="boton primario" data-ir="proyecto" type="button">Ir a Proyecto</button>
+      </div>
+      <div id="resultado-contenido" hidden>
+        <div class="resultado-cab">
+          <div>
+            <h2 id="t-resultado">Antes y después</h2>
+            <p class="ayuda" id="resultado-meta"></p>
+          </div>
+          <div class="segmentos" role="group" aria-label="Modo de vista" id="modo-vista">
+            <button type="button" data-modo="comparar" class="activo">Comparar</button>
+            <button type="button" data-modo="antes">Antes</button>
+            <button type="button" data-modo="despues">Después</button>
+          </div>
+        </div>
+        <div class="comparador" id="comparador" data-modo="comparar">
+          <img id="img-despues" alt="Propuesta de reforma (después)">
+          <div class="capa-antes" id="capa-antes"><img id="img-antes" alt="Foto original (antes)"></div>
+          <div class="divisor" id="divisor" aria-hidden="true"><span></span></div>
+          <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar entre antes y después">
+          <span class="etiqueta-img izq">ANTES</span><span class="etiqueta-img der">DESPUÉS</span>
+        </div>
+        <div class="acciones-resultado">
+          <button class="boton primario" id="descargar" type="button">Descargar imagen</button>
+          <button class="boton secundario" id="descargar-comp" type="button">Descargar antes / después</button>
+          <button class="boton secundario" id="compartir" type="button" hidden>Compartir</button>
+          <button class="boton fantasma" id="otra-version" type="button">Generar otra versión</button>
+        </div>
+        <article class="tarjeta">
+          <header class="tarjeta-cab"><h3>Reforma aplicada</h3></header>
+          <dl class="resumen" id="resultado-resumen"></dl>
+        </article>
+        <p class="aviso">Visualización orientativa generada con IA: puede contener imprecisiones en materiales o mobiliario y no sustituye a un proyecto técnico ni a un presupuesto.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ HISTORIAL -->
+    <section class="vista" id="vista-historial" aria-labelledby="t-historial">
+      <div class="resultado-cab"><h2 id="t-historial">Historial</h2><p class="ayuda">Guardado solo en este dispositivo.</p></div>
+      <div class="vacio" id="historial-vacio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>
+        <h2>Sin imágenes todavía</h2>
+        <p>Cada imagen que generes o importes aparecerá aquí.</p>
+      </div>
+      <ul class="galeria" id="galeria"></ul>
+    </section>
+
+    <!-- ============================================================ AJUSTES -->
+    <section class="vista" id="vista-ajustes" aria-labelledby="t-ajustes">
+      <div class="resultado-cab"><h2 id="t-ajustes">Ajustes</h2></div>
+      <div class="rejilla-ajustes">
+        <article class="tarjeta">
+          <header class="tarjeta-cab"><h3>Motor de IA</h3></header>
+          <div class="campos">
+            <div class="campo ancho">
+              <span>Proveedor</span>
+              <div class="segmentos" role="group" aria-label="Proveedor" id="a-motor">
+                <button type="button" data-motor="gemini">Google Gemini</button>
+                <button type="button" data-motor="openai">OpenAI</button>
+              </div>
+            </div>
+            <label class="campo ancho"><span>Modelo</span>
+              <input type="text" id="a-modelo" list="a-modelos" autocomplete="off" spellcheck="false">
+              <datalist id="a-modelos"></datalist>
+            </label>
+            <label class="campo ancho"><span>Clave API</span>
+              <span class="clave">
+                <input type="password" id="a-clave" autocomplete="off" spellcheck="false" placeholder="Pega aquí tu clave">
+                <button type="button" class="boton fantasma mini" id="a-ver-clave">Ver</button>
+              </span>
+            </label>
+          </div>
+          <p class="ayuda">La clave se guarda solo en este dispositivo y únicamente se envía al proveedor elegido. <a id="a-enlace-clave" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Conseguir una clave</a></p>
+          <div class="fila-botones">
+            <button class="boton primario" id="a-guardar" type="button">Guardar</button>
+            <button class="boton secundario" id="a-probar" type="button">Probar conexión</button>
+            <button class="boton fantasma" id="a-borrar" type="button">Borrar clave</button>
+          </div>
+        </article>
+
+        <article class="tarjeta">
+          <header class="tarjeta-cab"><h3>Instalar en el móvil</h3></header>
+          <ul class="lista-pasos">
+            <li><strong>iPhone (Safari):</strong> botón Compartir › «Añadir a pantalla de inicio».</li>
+            <li><strong>Android (Chrome):</strong> menú ⋮ › «Instalar aplicación» o «Añadir a pantalla de inicio».</li>
+            <li><strong>Ordenador (Chrome o Edge):</strong> icono de instalar en la barra de direcciones.</li>
+          </ul>
+          <button class="boton secundario" id="instalar" type="button" hidden>Instalar ahora</button>
+        </article>
+
+        <article class="tarjeta">
+          <header class="tarjeta-cab"><h3>Privacidad</h3></header>
+          <p>La app no tiene servidor propio: la foto y las instrucciones van directamente de tu dispositivo al proveedor de IA elegido (Google u OpenAI) solo cuando pulsas Generar. El historial se guarda en este dispositivo.</p>
+          <button class="boton fantasma" id="a-borrar-todo" type="button">Borrar historial de este dispositivo</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Generando -->
+  <div class="generando" id="generando" hidden role="status" aria-live="polite">
+    <div class="generando-caja">
+      <div class="rueda" aria-hidden="true"></div>
+      <h3>Generando la reforma…</h3>
+      <p id="generando-texto">Suele tardar entre 20 segundos y 2 minutos.</p>
+      <p class="contador" id="generando-tiempo">0 s</p>
+      <button class="boton fantasma" id="cancelar" type="button">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Modo asistido -->
+  <dialog id="dlg-asistido">
+    <form method="dialog" class="dialogo">
+      <h3>Generar sin clave API</h3>
+      <ol class="lista-pasos">
+        <li>Pulsa <strong>Copiar instrucciones</strong>.</li>
+        <li>Abre Gemini o ChatGPT, adjunta la foto original y pega el texto.</li>
+        <li>Descarga la imagen que te devuelva y pulsa <strong>Importar resultado</strong> para verla aquí en el antes y después.</li>
+      </ol>
+      <div class="fila-botones">
+        <button class="boton primario" type="button" id="asistido-copiar">Copiar instrucciones</button>
+        <a class="boton secundario" href="https://gemini.google.com/app" target="_blank" rel="noopener">Abrir Gemini</a>
+        <a class="boton secundario" href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir ChatGPT</a>
+      </div>
+      <div class="fila-botones">
+        <label class="boton fantasma"><input type="file" accept="image/*" id="importar" hidden>Importar resultado</label>
+        <button class="boton fantasma" value="cerrar">Cerrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Mensajes -->
+  <dialog id="dlg-mensaje">
+    <form method="dialog" class="dialogo">
+      <h3 id="mensaje-titulo"></h3>
+      <p id="mensaje-texto" class="mensaje-texto"></p>
+      <div class="fila-botones">
+        <button class="boton secundario" id="mensaje-extra" type="button" hidden></button>
+        <button class="boton primario" value="ok">Entendido</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="tostada" id="tostada" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
